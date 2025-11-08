@@ -40,7 +40,7 @@
 
         <!-- wp:column {"verticalAlignment":"center","width":"15%"} -->
         <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:15%">
-            <!-- wp:social-links {"iconColor":"black","iconColorValue":"var:preset|color|black","iconBackgroundColor":"white","iconBackgroundColorValue":"var:preset|color|white","openInNewTab":true,"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|medium"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
+            <!-- wp:social-links {"iconColor":"black","iconColorValue":"#000000","iconBackgroundColor":"white","iconBackgroundColorValue":"#ffffff","openInNewTab":true,"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|small"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
             <ul class="wp-block-social-links has-icon-color has-icon-background-color">
                 <!-- wp:social-link {"url":"#0","service":"github","label":"GitHub"} /-->
 

@@ -4,6 +4,7 @@
  * Slug: basse/header
  * Categories: header
  * Block Types: core/template-part/header
+ * Viewport Width: 1920
  * Description: Site header with site title and navigation.
  *
  * @package Basse

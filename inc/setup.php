@@ -32,13 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  */
 function set_theme_defaults() {
-    // Enqueue editor styles.
-    add_editor_style(
-        array(
-            './assets/css/editor.css',
-        )
-    );
-
+    
     // Remove core block patterns.
     remove_theme_support( 'core-block-patterns' );
 }

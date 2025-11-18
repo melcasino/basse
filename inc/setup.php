@@ -65,3 +65,31 @@ function register_pattern_categories() {
     }
 }
 add_action( 'init', THEME_NS . '\register_pattern_categories', 9 );
+
+
+
+/**
+ * Modify WordPress default theme.json data
+ * 
+ */
+function modify_wp_default_theme_json_data( $theme_json ) {
+	
+    $data = $theme_json->get_data();
+
+	if ( isset( $data['settings']['color'] ) ) { 
+		unset( $data['settings']['color']['palette']['default'] );
+		unset( $data['settings']['color']['gradients']['default'] );
+		unset( $data['settings']['color']['duotone']['default'] );
+	}
+
+	if ( isset( $data['settings']['spacing'] ) ) {
+		$data['settings']['spacing']['spacingScale']['steps'] = 0;
+		unset( $data['settings']['spacing']['spacingScale']['default'] );
+		unset( $data['settings']['spacing']['spacingSizes']['default'] );
+	}
+
+	$theme_json->update_with( $data );
+
+    return $theme_json;
+}
+add_filter( 'wp_theme_json_data_default', THEME_NS . '\modify_wp_default_theme_json_data' );

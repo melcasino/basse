@@ -43,5 +43,7 @@ define( 'THEME_NS', __NAMESPACE__ );
  * Load required files
  * 
  */
-// Setup theme defaults and WordPress features
 require_once THEME_DIR . '/inc/setup.php';
+require_once THEME_DIR . '/inc/scripts.php';
+require_once THEME_DIR . '/inc/custom-functions.php';
+require_once THEME_DIR . '/inc/utils.php';

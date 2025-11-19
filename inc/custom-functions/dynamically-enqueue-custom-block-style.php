@@ -89,9 +89,9 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
         }
 
         if( array_key_exists( 'load_in', $args ) ) {
-            if ( strtolower( !$args['load_in'] ) !== 'frontend' ) {
-                if ( strtolower( !$args['load_in'] ) !== 'editor' ) {
-                    if ( !isset( $args['load_in'] ) ) {
+            if ( strtolower( $args['load_in'] ) !== 'frontend' ) {
+                if ( strtolower( $args['load_in'] ) !== 'editor' ) {
+                    if ( !is_null( $args['load_in'] ) ) {
                         return;
                     }
                 }

@@ -35,13 +35,17 @@ function enqueue_frontend_assets() {
     // Frontend CSS metadata
     $frontend_css_metadata = include THEME_DIR . '/assets/css/frontend.asset.php';
 
-    // Enqueue frontend CSS
-    wp_enqueue_style( 
-        sanitize_title( THEME_NS ) . '-frontend', 
-        THEME_URI . '/assets/css/frontend.css', 
-        $frontend_css_metadata['dependencies'], 
-        $frontend_css_metadata['version'] 
-    );
+    // Check if frontend.css file has content
+    if ( filesize( THEME_DIR . '/assets/css/frontend.css' ) > 0 ) {
+
+        // Enqueue frontend CSS
+        wp_enqueue_style( 
+            sanitize_title( THEME_NS ) . '-frontend', 
+            THEME_URI . '/assets/css/frontend.css', 
+            $frontend_css_metadata['dependencies'], 
+            $frontend_css_metadata['version'] 
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', THEME_NS . '\enqueue_frontend_assets' );
 
@@ -102,11 +106,11 @@ function enqueue_custom_block_styles() {
     $css_file_paths = glob( THEME_DIR . '/assets/css/blocks/block-custom-css/*.css' );
     $css_file_metadata_paths = glob( THEME_DIR . '/assets/css/blocks/block-custom-css/*.php' );
 
-    // Filter the array of all custom block styles file paths to get only the default CSS file paths.
-    $default_css_file_paths = array_filter( $css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } );
+    // Filter the array of all custom block styles file paths to get only the default CSS file paths and re-index the output array.
+    $default_css_file_paths = array_values( array_filter( $css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } ) );
 
-    // Filter the array of all custom block styles file paths to get only the RTL CSS file paths.
-    $rtl_css_file_paths = array_filter( $css_file_paths, function( $file_path ) {  return str_contains( basename( $file_path ), '-rtl.css'); } );
+    // Filter the array of all custom block styles file paths to get only the RTL CSS file paths and re-index the output array.
+    $rtl_css_file_paths = array_values( array_filter( $css_file_paths, function( $file_path ) {  return str_contains( basename( $file_path ), '-rtl.css'); } ) );
 
     foreach ( $default_css_file_paths as $i => $file_path ) {
         // Get the filename, basename (filename with no extension), namespace, block slug and block name.
@@ -117,7 +121,7 @@ function enqueue_custom_block_styles() {
         $block_name = str_replace( '---', '/', $basename );
 
         // Get the metadata of the current CSS file
-        $css_file_metadata = isset( $css_file_metadata_paths[$i - 1] ) ? include $css_file_metadata_paths[$i - 1] : null;
+        $css_file_metadata = isset( $css_file_metadata_paths[$i] ) ? include $css_file_metadata_paths[$i] : null;
         
         // Enqueue block CSS
         wp_enqueue_block_style(
@@ -161,11 +165,11 @@ function enqueue_custom_block_patterns_styles() {
     $patterns_css_file_metadata = glob( THEME_DIR . '/assets/css/blocks/patterns/*.php' );
 
     // Filter the array of all patterns CSS file paths to get only the default CSS file paths. 
-    $patterns_default_css_file_paths = array_filter( $patterns_css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } );
+    $patterns_default_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } ) );
 
     // Filter the array of all patterns CSS file paths to get only the RTL CSS file paths.
-    $patterns_rtl_css_file_paths = array_filter( $patterns_css_file_paths, function( $file_path ) {  return str_contains( basename( $file_path ), '-rtl.css'); } );
-    
+    $patterns_rtl_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return str_contains( basename( $file_path ), '-rtl.css'); } ) );
+
     // Loop through all the default CSS file paths
     foreach( $patterns_default_css_file_paths as $i => $file_path ) {
 
@@ -183,7 +187,7 @@ function enqueue_custom_block_patterns_styles() {
         $css_file_headers = get_file_data( $file_path, $default_file_headers );
 
         // Get the CSS file metadata of the current file being loop through.
-        $css_file_metadata = isset( $patterns_css_file_metadata[$i - 1] ) ? include  $patterns_css_file_metadata[$i - 1] : null;
+        $css_file_metadata = isset( $patterns_css_file_metadata[$i] ) ? include  $patterns_css_file_metadata[$i] : null;
 
         // If it is set, get the version number of the current file being 
         // loop through from the CSS file metadata.
@@ -206,3 +210,77 @@ function enqueue_custom_block_patterns_styles() {
     }
 }
 add_action( 'init', THEME_NS . '\enqueue_custom_block_patterns_styles' );
+
+
+
+/**
+ * Enqueue custom block patterns JS only when patterns are being used in the page.
+ * 
+ * * The following are required for this function to work:
+ * 1. All block patterns CSS files must be stored in "/assets/css/blocks/patterns" directory.
+ * 2. All block patterns CSS files must have the required file headers:
+ *           
+ *      Name:               The Pattern Name. Required.
+ *      Block Name:         The block name. Must contain namespace and block slug (e.g. namespace/block-slug). Required
+ *      Class Name:         The CSS Class Name used in the pattern. Must be unique. Required
+ *      Load In:            Where the asset will be loaded. Optional. When provided, may be either 'frontend' or 'editor'. Default: null.
+ *      Loading Method:     The preferred loading Method. Optional. When provided, may be either 'inline' or 'external'. Default: 'inline'.     
+ * 
+ * Uses the following Utility function:
+ * dynamically_enqueue_custom_block_script()
+ * 
+ */
+function enqueue_custom_block_patterns_scripts() {
+
+    // Scan the folder where the custom block patterns styles are located.
+    $patterns_js_file_paths = glob( THEME_DIR . '/assets/js/blocks/patterns/*.js' );
+    $patterns_js_file_metadata = glob( THEME_DIR . '/assets/js/blocks/patterns/*.php' );
+    
+    foreach( $patterns_js_file_paths as $i => $file_path ) {
+
+        // Default file headers
+        $default_file_headers = array(
+            'name'              =>  'Name',
+            'block_name'        =>  'Block Name',
+            'class_name'        =>  'Class Name',
+            'load_in'           =>  'Load In',
+            'loading_method'    =>  'Loading Method',
+        );
+
+        // Get the file headers of the current file being loop through
+        $js_file_headers = get_file_data( $file_path, $default_file_headers );
+
+        // Get the JS file metadata of the current file being loop through.
+        $js_file_metadata = isset( $patterns_js_file_metadata[$i] ) ? include  $patterns_js_file_metadata[$i] : null;
+
+        // If it is set, get the version number of the current file being 
+        // loop through from the JS file metadata.
+        $version = $js_file_metadata['version'] ?? null;
+
+        // If it is set, get the array of dependency handles of the current file being 
+        // loop through from the JS file metadata. 
+        $dependencies = $js_file_metadata['dependencies'] ?? array();
+
+        // Create the file source using the file path
+        $src = str_replace( THEME_DIR, THEME_URI, $file_path );
+
+        // Create the $args array that will be passed as an argment to the enqueue function
+        $args = array(
+            'strategy'  =>  'defer',
+        );
+        $args = !empty( $js_file_headers['load_in'] ) ? array_merge( $args, array( 'load_in' => $js_file_headers['load_in'] ) ) : $args;
+        $args = !empty( $js_file_headers['loading_method'] ) ? array_merge( $args, array( 'loading_method' => $js_file_headers['loading_method'] ) ) : $args;
+
+        // Enqueue the JS asset using a custom function
+        dynamically_enqueue_custom_block_script(
+            $js_file_headers['block_name'],
+            $js_file_headers['class_name'],
+            $file_path,
+            $src,
+            $dependencies,
+            $version,
+            $args
+        );
+    }
+}
+add_action( 'init', THEME_NS . '\enqueue_custom_block_patterns_scripts' );

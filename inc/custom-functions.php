@@ -32,3 +32,4 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  */
 require_once THEME_DIR . '/inc/custom-functions/dynamically-enqueue-custom-block-style.php';
+require_once THEME_DIR . '/inc/custom-functions/dynamically-enqueue-custom-block-script.php';

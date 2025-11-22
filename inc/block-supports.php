@@ -80,7 +80,7 @@ function modify_block_supports( $args, $block_type ) {
         array(
             'block_name'    =>  'core/heading',
             'supports'      =>  array(
-                'shadow'        =>	true,
+                'shadow'    =>	true,
             )
         ),
         array(

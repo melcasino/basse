@@ -44,6 +44,9 @@ function modify_block_supports( $args, $block_type ) {
                         'blockGap'	=>	false,
                     )
                 ),
+                'position'  =>  array(
+                    'sticky'    =>  true,
+                ),
             )
         ),
         array(

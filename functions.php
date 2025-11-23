@@ -48,3 +48,4 @@ require_once THEME_DIR . '/inc/scripts.php';
 require_once THEME_DIR . '/inc/custom-functions.php';
 require_once THEME_DIR . '/inc/utils.php';
 require_once THEME_DIR . '/inc/block-supports.php';
+require_once THEME_DIR . '/inc/editor.php';

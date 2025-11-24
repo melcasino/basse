@@ -1,0 +1,33 @@
+//
+// Custom CSS for core/navigation block
+//
+
+
+
+.wp-block-navigation {
+    :where(.wp-block-navigation__responsive-container) {
+        left: auto;
+
+        &.is-menu-open {
+            width: min(360px, 100%);
+        }
+    }
+
+    :where(a) {
+        text-decoration: underline;
+        text-decoration-color: transparent;
+    }
+    
+    :where(.wp-block-navigation-item) {
+        &:where(.current-menu-item) {
+            .wp-block-navigation-item__content {
+                text-decoration-color: currentColor;
+            }
+        }
+        .wp-block-navigation-item__content {
+            &:is(:hover, :focus, :focus-visible) {
+                text-decoration-color: currentColor;
+            }
+        }
+    }
+}

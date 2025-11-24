@@ -15,6 +15,16 @@
 					"slug": "white"
 				},
 				{
+					"color": "#DEE2E6",
+					"name": "Light Gray",
+					"slug": "light-gray"
+				},
+				{
+					"color": "#495057",
+					"name": "Dark Gray",
+					"slug": "dark-gray"
+				},
+				{
 					"color": "#000000",
 					"name": "Black",
 					"slug": "black"
@@ -242,7 +252,7 @@
 				}
 			},
 			"link": {
-				"css": "& { transition: text-decoration-color 0.2s ease-in-out; } &:hover { text-decoration-color: transparent }"
+				"css": "& { transition: text-decoration-color 0.2s ease-out; } &:hover { text-decoration-color: transparent }"
 			},
 			"button": {
 				"color": {
@@ -250,7 +260,8 @@
 					"background": "var:preset|color|black"
 				},
 				"typography": {
-					"lineHeight": "var:custom|typography|line-height|x-small"
+					"lineHeight": "var:custom|typography|line-height|x-small",
+					"textDecoration": "underline"
 				},
 				"spacing": {
 					"padding": {
@@ -261,23 +272,31 @@
 					}
 				},
 				"border": {
+					"style": "solid",
 					"width": "1px",
+					"color": "var:preset|color|black",
 					"radius": "var:custom|border|radius|medium"
 				},
 				":hover": {
 					"color": {
-						"background": "color-mix(in srgb, var(--wp--preset--color--black) 80%, transparent)"
+						"background": "var:preset|color|dark-gray"
+					},
+					"border": {
+						"color": "var:preset|color|dark-gray"
 					}
 				},
 				":focus": {
 					"color": {
-						"background": "color-mix(in srgb, var(--wp--preset--color--black) 80%, transparent)"
+						"background": "var:preset|color|dark-gray"
+					},
+					"border": {
+						"color": "var:preset|color|dark-gray"
 					},
 					"outline": {
-						"offset": "2px"
+						"offset": "3px"
 					}
 				},
-				"css": "& { transition: all 0.2s ease-in-out; }"
+				"css": "& { transition: all 0.2s ease-out; text-decoration-color: transparent; } &:where(:hover, :focus, :focus-visible) { text-decoration-color: currentColor; }"
 			}
 		},
 		"blocks": {},
@@ -295,7 +314,7 @@
 			"title": "Footer"
 		},
 		{
-			"area": "uncategorized",
+			"area": "sidebar",
 			"name": "sidebar",
 			"title": "Sidebar"
 		}

@@ -24,7 +24,7 @@ const computeJsEntries = () => {
 
 const computeScssEntries = () => {
     const scssAbsPattern = path.join(process.cwd(), 'src', 'scss', '**', '*.scss').split(path.sep).join(path.posix.sep);
-    const scssFiles = glob.sync(scssAbsPattern);
+    const scssFiles = glob.sync(scssAbsPattern).filter(p => !p.includes(path.join(process.cwd(), 'src', 'scss', 'partials')));
     return scssFiles.reduce((acc, filePath) => {
         const rel = path.relative(path.join(process.cwd(), 'src', 'scss'), filePath).split(path.sep).join('/');
         const key = `css/${rel.replace(/\.scss$/, '')}`;

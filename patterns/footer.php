@@ -18,8 +18,8 @@
     <p class="has-text-align-center has-x-small-font-size" style="padding-top:var(--wp--preset--spacing--x-large);padding-bottom:var(--wp--preset--spacing--large)"><a href="#header" data-type="internal" data-id="#header">Back to Top</a></p>
     <!-- /wp:paragraph -->
 
-    <!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"}},"border":{"top":{"color":"var:preset|color|white","style":"dotted","width":"1px"}}}} -->
-    <div class="wp-block-columns alignwide are-vertically-aligned-center" style="border-top-color:var(--wp--preset--color--white);border-top-style:dotted;border-top-width:1px;padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)">
+    <!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"}},"border":{"top":{"color":"var:preset|color|dark-gray","style":"solid","width":"1px"}}}} -->
+    <div class="wp-block-columns alignwide are-vertically-aligned-center" style="border-top-color:var(--wp--preset--color--dark-gray);border-top-style:solid;border-top-width:1px;padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)">
         <!-- wp:column {"verticalAlignment":"center","width":"15%"} -->
         <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:15%">
             <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
@@ -34,7 +34,7 @@
 
         <!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
         <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:70%">
-            <!-- wp:navigation {"ref":8,"overlayMenu":"never","layout":{"type":"flex","justifyContent":"center"}} /-->
+            <!-- wp:navigation {"ref":64,"overlayMenu":"never","layout":{"type":"flex","justifyContent":"center"}} /-->
         </div>
         <!-- /wp:column -->
 
@@ -46,7 +46,7 @@
 
                 <!-- wp:social-link {"url":"#0","service":"dribbble","label":"Dribbble"} /-->
 
-                <!-- wp:social-link {"url":"#0","service":"wordpress","label":"WordPress"} /-->
+                <!-- wp:social-link {"url":"#0","service":"linkedin","label":"LinkedIn"} /-->
             </ul>
             <!-- /wp:social-links -->
         </div>

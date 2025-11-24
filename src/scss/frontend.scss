@@ -1,4 +1,10 @@
-body  {
-    background-color: white;
-    text-align: left;
-}
+//
+// Global theme stylesheet that will be used in frontend
+//
+
+
+
+// Partials
+@use 'partials/reset';
+@use 'partials/elements';
+@use 'partials/forms';

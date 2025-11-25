@@ -46,25 +46,27 @@ add_action( 'after_setup_theme', THEME_NS . '\set_theme_defaults' );
  */
 function register_pattern_categories() {
     $block_pattern_categories = array(
-        'templates'	=> array(
+        THEME_NS . '/templates'	=> array(
             'label' => __( 'Templates', THEME_NS ),
         ),
-        'pages'		=> array(
+        THEME_NS . '/pages'		=> array(
             'label' => __( 'Pages', THEME_NS ),
         ),
-        'sections'	=> array(
+        THEME_NS . '/sections'	=> array(
             'label' => __( 'Sections', THEME_NS ),
         ),
-        'cards'	    => array(
+        THEME_NS . '/cards'	    => array(
             'label' => __( 'Cards', THEME_NS ),
         ),
     );
 
     foreach ( $block_pattern_categories as $name => $properties ) {
-        register_block_pattern_category( $name, $properties );
+        if ( ! \WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {
+            register_block_pattern_category( $name, $properties );
+        }
     }
 }
-add_action( 'init', THEME_NS . '\register_pattern_categories', 9 );
+add_action( 'init', THEME_NS . '\register_pattern_categories' );
 
 
 

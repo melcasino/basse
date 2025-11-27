@@ -1,0 +1,5 @@
+/*!
+ Name: Post loop list with static page heading
+ Block Name: core/query
+ Class Name: basse-pattern-post-loop-list-default
+ */:where(.basse-pattern-post-loop-list-default:not(:has(>.wp-block-query-pagination)) .wp-block-post:last-child)>hr{display:none}

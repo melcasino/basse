@@ -93,6 +93,26 @@ function modify_block_supports( $args, $block_type ) {
 				'align'     =>	array( 'wide', 'full' ),
             )
         ),
+        array(
+            'block_name'    =>  'core/separator',
+            'supports'      =>  array(
+                'dimensions'             => array(
+                    'minHeight' =>  true,
+                    '__experimentalDefaultControls' =>  array(
+                        'minHeight' =>  false,
+                    ),
+                ),
+                '__experimentalBorder'  =>  array(
+                    'color'                         =>  true,
+                    'style'                         =>  true,
+                    'width'                         =>  true,
+                    '__experimentalDefaultControls' =>  array(
+                        'color' =>  true,
+                        'width' =>  true,
+                    ),
+                ),
+            )
+        ),
     );
 
     // Create an array of block names from $blocks_to_modify

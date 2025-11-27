@@ -152,6 +152,19 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
     
                     // Check the loading method specified for the CSS asset. (i.e. "inline" or "extrnal")
                     if ( strtolower( $loading_method ) === 'inline' ) {
+
+                        // Temporary fix for a "core/query" block issue.
+                        // "core/query" CSS generated from theme.json not rendered when "enhancedPagination" attribute is false. 
+                        // @refer https://github.com/WordPress/gutenberg/issues/68580
+                        //
+                        // Because of the issue mentioned above, any custom styles for "core/query" block that is set 
+                        // to be enqueued in an inline manner will fail to load.
+                        // Check on the issue in the future and remove this solution when it is already fixed.
+                        // 
+                        if ( $block_name === 'core/query' && ( !isset( $block['attrs']['enhancedPagination'] ) || isset( $block['attrs']['enhancedPagination'] ) === false ) ) {
+                            wp_enqueue_style( 'wp-block-query' );
+                        }
+                        // END of fix
     
                         // Get the content of the CSS file and assign it to a variable.
                         $css_file_content = file_get_contents( $path );

@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3,
+    "title": "Outline - Small",
+    "slug": "outline-small",
+    "blockTypes": ["core/button"],
+    "styles": {
+        "typography": {
+            "fontSize": "var:preset|font-size|small"
+        },
+        "color": {
+            "text": "currentColor",
+            "background": "transparent"
+        },
+        "spacing": {
+            "padding": {
+                "top": "0.625em",
+                "right": "1em",
+                "bottom": "0.625em",
+                "left": "1em"
+            }
+        }
+    }
+}

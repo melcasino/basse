@@ -90,6 +90,16 @@ function modify_wp_default_theme_json_data( $theme_json ) {
 		unset( $data['settings']['spacing']['spacingSizes']['default'] );
 	}
 
+    if ( isset( $data['styles']['blocks']['core/button']['variations']['outline'] ) ) {
+        $data['styles']['blocks']['core/button']['variations']['outline']['spacing']['padding'] = array(
+            'top'       =>  '0.75em',
+            'right'     =>  '1.125em',
+            'bottom'    =>  '0.75em',
+            'left'      =>  '1.125em'
+        );
+        $data['styles']['blocks']['core/button']['variations']['outline']['border']['width'] = '1px';
+    }
+
 	$theme_json->update_with( $data );
 
     return $theme_json;

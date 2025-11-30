@@ -8,6 +8,8 @@
 		"lint:js": "wp-scripts lint-js"
 	},
 	"devDependencies": {
+		"@wordpress/blocks": "^15.9.0",
+		"@wordpress/dom-ready": "^4.36.0",
 		"@wordpress/scripts": "^30.25.0",
 		"css-minimizer-webpack-plugin": "^7.0.2",
 		"cssnano": "^7.1.1",

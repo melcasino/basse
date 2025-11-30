@@ -94,7 +94,7 @@ add_action( 'enqueue_block_editor_assets', THEME_NS . '\enqueue_editor_assets' )
  * This will enqueue default custom CSS that is too long or complex to add in theme.json.
  * 
  * The following are required for this function to work:
- * 1. CSS files must be stored in the "/assets/css/blocks/block-custom-css" directory.
+ * 1. CSS files must be stored in the "/assets/css/block/block-custom-css" directory.
  * 2. CSS file must follow the following naming convention:
  *    If block name is "namespace/block-slug", the CSS filename for that block will be "namespace---block-slug.css"
  *    e.g. core/buttons --> core---buttons.css
@@ -103,8 +103,8 @@ add_action( 'enqueue_block_editor_assets', THEME_NS . '\enqueue_editor_assets' )
 function enqueue_custom_block_styles() {
 
     // Scan the folder where the custom block styles are located.
-    $css_file_paths = glob( THEME_DIR . '/assets/css/blocks/block-custom-css/*.css' );
-    $css_file_metadata_paths = glob( THEME_DIR . '/assets/css/blocks/block-custom-css/*.php' );
+    $css_file_paths = glob( THEME_DIR . '/assets/css/block/block-custom-css/*.css' );
+    $css_file_metadata_paths = glob( THEME_DIR . '/assets/css/block/block-custom-css/*.php' );
 
     // Filter the array of all custom block styles file paths to get only the default CSS file paths and re-index the output array.
     $default_css_file_paths = array_values( array_filter( $css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } ) );
@@ -128,7 +128,7 @@ function enqueue_custom_block_styles() {
             $block_name,
             array(
                 'handle' => sanitize_title( THEME_NS ) . '-' . $namespace . '-' . $block_slug,
-                'src'    => THEME_URI . '/assets/css/blocks/block-custom-css/' . $filename,
+                'src'    => THEME_URI . '/assets/css/block/block-custom-css/' . $filename,
                 'path'   => $file_path,
                 'ver'    => $css_file_metadata ? $css_file_metadata['version'] : THEME_VER
             )
@@ -143,7 +143,7 @@ add_action( 'init', THEME_NS . '\enqueue_custom_block_styles' );
  * Enqueue custom block patterns styles only when patterns are being used in the page.
  * 
  * The following are required for this function to work:
- * 1. All block patterns CSS files must be stored in "/assets/css/blocks/patterns" directory.
+ * 1. All block patterns CSS files must be stored in "/assets/css/block/block-patterns" directory.
  * 2. All block patterns CSS files must have the required file headers:
  *           
  *      Name:               The Pattern Name. Required.
@@ -161,8 +161,8 @@ add_action( 'init', THEME_NS . '\enqueue_custom_block_styles' );
 function enqueue_custom_block_patterns_styles() {
 
     // Scan the folder where the custom block patterns styles are located.
-    $patterns_css_file_paths = glob( THEME_DIR . '/assets/css/blocks/patterns/*.css' );
-    $patterns_css_file_metadata = glob( THEME_DIR . '/assets/css/blocks/patterns/*.php' );
+    $patterns_css_file_paths = glob( THEME_DIR . '/assets/css/block/block-patterns/*.css' );
+    $patterns_css_file_metadata = glob( THEME_DIR . '/assets/css/block/block-patterns/*.php' );
 
     // Filter the array of all patterns CSS file paths to get only the default CSS file paths. 
     $patterns_default_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } ) );
@@ -217,8 +217,8 @@ add_action( 'init', THEME_NS . '\enqueue_custom_block_patterns_styles' );
  * Enqueue custom block patterns JS only when patterns are being used in the page.
  * 
  * * The following are required for this function to work:
- * 1. All block patterns CSS files must be stored in "/assets/css/blocks/patterns" directory.
- * 2. All block patterns CSS files must have the required file headers:
+ * 1. All block patterns JS files must be stored in "/assets/js/block/block-patterns" directory.
+ * 2. All block patterns JS files must have the required file headers:
  *           
  *      Name:               The Pattern Name. Required.
  *      Block Name:         The block name. Must contain namespace and block slug (e.g. namespace/block-slug). Required
@@ -233,8 +233,8 @@ add_action( 'init', THEME_NS . '\enqueue_custom_block_patterns_styles' );
 function enqueue_custom_block_patterns_scripts() {
 
     // Scan the folder where the custom block patterns styles are located.
-    $patterns_js_file_paths = glob( THEME_DIR . '/assets/js/blocks/patterns/*.js' );
-    $patterns_js_file_metadata = glob( THEME_DIR . '/assets/js/blocks/patterns/*.php' );
+    $patterns_js_file_paths = glob( THEME_DIR . '/assets/js/block/block-patterns/*.js' );
+    $patterns_js_file_metadata = glob( THEME_DIR . '/assets/js/block/block-patterns/*.php' );
     
     foreach( $patterns_js_file_paths as $i => $file_path ) {
 

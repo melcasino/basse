@@ -61,12 +61,12 @@ module.exports = {
             minimize: true,
             minimizer: [
                 new TerserPlugin({
-                    // terserOptions: {
-                    //     format: {
-                    //         // Match any block comment that begin with /*!
-                    //         comments: /^\**!|@preserve|@license|@cc_on/i,
-                    //     },
-                    // },
+                    terserOptions: {
+                        format: {
+                            // Match any block comment that begin with /*!
+                            comments: /^\**!|@preserve|@cc_on/i,
+                        },
+                    },
                     extractComments: false,
                 }),
             ],

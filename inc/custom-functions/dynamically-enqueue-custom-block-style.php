@@ -9,14 +9,28 @@
  * @param string $class_name (required) 
  * The CSS class name associated to the CSS asset. It must be unique.
  * 
- * @param string $path (required) 
- * The full path of the CSS file.
- * 
- * @param string|bool|null $version (optional)
- * The version of the CSS file.
- * 
- * @param array $args (optional)
- * An array of additional style loading strategies.
+ * @param array $args
+ * An array of arguments for the stylesheet.
+ * |
+ * |    $args['handle'] string
+ * |    Required. The handle for the stylesheet
+ * |
+ * |    $args['src'] string|false
+ * |    Required. The source URL of the stylesheet.
+ * |
+ * |    $args['path'] string|null
+ * |    Required. Absolute path to the stylesheet, so that it can potentially be inlined.
+ * |
+ * |    $args['ver'] string|bool|null
+ * |    Optional. The stylesheet version number.
+ * |
+ * |    $args['deps'] string[]
+ * |    Optional. Array of registered stylesheet handles this stylesheet depends on.
+ * |    Default: array()
+ * |
+ * |    $args['media'] string
+ * |    Optional. The media for which this stylesheet has been defined.
+ * |    Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
  * |
  * |    $args['loading_method'] string
  * |    Optional. If provided, may be either 'inline' or 'external'.
@@ -31,7 +45,6 @@
  * |    If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'external'. 
  * |    Default: 'false'
  * |
- * Default: array()
  * 
  * @return void
  * 
@@ -69,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 
-function dynamically_enqueue_custom_block_style( string $block_name, string $class_name, string $path, string|bool|null $version = false, array $args = array() ) {
+function dynamically_enqueue_custom_block_style( string $block_name, string $class_name, array $args ) {
     
     // Bail early if required functions does not exist.
     if ( !function_exists( 'basse\block_has_class' ) ) return;
@@ -80,7 +93,6 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
     // Validate passed arguments
     if ( !str_contains( $block_name, '/' ) || str_contains( $block_name, ' ' ) ) return;
     if ( str_contains( $class_name, ' ' )  || str_starts_with( $class_name, '.') ) return;
-    if ( !file_exists( $path) ) return;
     if ( !empty( $args ) ) {
         if ( array_key_exists( 'loading_method', $args )  ) {
             if ( strtolower( $args['loading_method'] ) !== 'inline' ) {
@@ -88,7 +100,7 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
             }
         }
 
-        if( array_key_exists( 'load_in', $args ) ) {
+        if ( array_key_exists( 'load_in', $args ) ) {
             if ( strtolower( $args['load_in'] ) !== 'frontend' ) {
                 if ( strtolower( $args['load_in'] ) !== 'editor' ) {
                     if ( !is_null( $args['load_in'] ) ) {
@@ -98,25 +110,22 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
             }
         }
 
-        if( array_key_exists( 'critical', $args ) ) {
+        if ( array_key_exists( 'critical', $args ) ) {
             if( !is_bool( $args['critical'] ) ) return;
         }
     }
 
     // Set variables that will be used in enqueueing the asset.
-    $handle = THEME_NS . '-' . strtolower( str_replace( '/', '-', $block_name ) ) . '-' . $class_name;
-    $asset_source = str_replace( THEME_DIR, THEME_URI, $path );
-    $version = $version ? $version : THEME_VER;
+    $handle = $args['handle'];
+    $path = $args['path'];
+    $src = $args['src'];
+    $version = $args['ver'] ? $args['ver'] : THEME_VER;
     $loading_method =  $args['loading_method'] ?? 'inline';
     $load_in = $args['load_in'] ?? null;
     $critical = $args['critical'] ?? false;
-
-    // Add additional string to the $handle variable based on the value of the $load_in variable.
-    if ( isset( $load_in ) && strtolower( $load_in ) === 'frontend' ) {
-        $handle = $handle . '-frontend';
-    } else if ( isset( $load_in ) && strtolower( $load_in ) === 'editor' ) {
-        $handle = $handle . '-editor';
-    }
+    $enqueue_args = array_filter( $args, function( $key ) {
+        return $key !== 'loading_method' && $key !== 'load_in' && $key !== 'critical';
+    }, ARRAY_FILTER_USE_KEY );
 
     // Check if the current page being rendered is an admin area or not.
     if ( is_admin() ) {
@@ -128,12 +137,7 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
             // Enqueue asset in the editor
             wp_enqueue_block_style(
                 $block_name,
-                array(
-                    'handle' => $handle,
-                    'src'    => $asset_source,
-                    'path'   => $path,
-                    'ver'    => $version
-                )
+                $enqueue_args
             );
         }
 
@@ -145,7 +149,7 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
     
             // Create a function for filtering the blocks in the current page and assign it to a variable.
             $filter_callback_function = function( string $content, array $block ) 
-            use ( &$filter_callback_function, $block_name, $class_name, $handle, $path, $asset_source, $version, $loading_method, $critical ): string {
+            use ( &$filter_callback_function, $block_name, $class_name, $handle, $path, $src, $version, $loading_method, $critical ): string {
     
                 // Check if the current block being filtered contains a CSS class specified in the $class_name being passed.
                 if ( block_has_class( $block, $class_name ) ) {
@@ -182,7 +186,7 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
                         );
     
                     } else if ( strtolower( $loading_method ) === 'external' ) {
-                        wp_enqueue_style( $handle, $asset_source, array(), $version );
+                        wp_enqueue_style( $handle, $src, array(), $version );
     
                         // Check if the CSS asset being enqueued is a critical CSS.
                         if ( !$critical ) {

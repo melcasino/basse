@@ -149,6 +149,8 @@ add_action( 'init', THEME_NS . '\enqueue_custom_block_styles' );
  *      Name:               The Pattern Name. Required.
  *      Block Name:         The block name. Must contain namespace and block slug (e.g. namespace/block-slug). Required
  *      Class Name:         The CSS Class Name used in the pattern. Must be unique. Required
+ *      Dependencies:       A comma separted registered stylesheet handles the stylesheet depends on. Optional
+ *      Media:              The media for which this stylesheet has been defined. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
  *      Load In:            Where the asset will be loaded. Optional. When provided, may be either 'frontend' or 'editor'. Default: null.
  *      Loading Method:     The preferred loading Method. Optional. When provided, may be either 'inline' or 'external'. Default: 'inline'.
  *      Critical:           Whether the CSS asset is a critial CSS or not. Only relevant when 'Loading Method' is 'external'. 
@@ -178,6 +180,8 @@ function enqueue_custom_block_patterns_styles() {
             'name'              =>  'Name',
             'block_name'        =>  'Block Name',
             'class_name'        =>  'Class Name',
+            'dependencies'      =>  'Dependencies',
+            'media'             =>  'Media',
             'load_in'           =>  'Load In',
             'loading_method'    =>  'Loading Method',
             'critical'          =>  'Critical'
@@ -193,8 +197,28 @@ function enqueue_custom_block_patterns_styles() {
         // loop through from the CSS file metadata.
         $version = $css_file_metadata['version'] ?? null;
 
-        // Create the $args array that will be passed as an argment to the enqueue function
+        // Create asset handle
+        $handle = 'basse-pattern---' . strtolower( str_replace( ' ', '-', $css_file_headers['name'] ) );
+        if ( strtolower( $css_file_headers['load_in'] ) === 'frontend' ) {
+            $handle = $handle . '---frontend';
+        } elseif( strtolower( $css_file_headers['load_in'] ) === 'editor' ) {
+            $handle = $handle . '---editor';
+        }
+
+        // Create asset source from $file_path
+        $src = file_exists( $file_path ) ? str_replace( THEME_DIR, THEME_URI, $file_path ) : null;
+
+        // Create array of dependencies from $css_file_headers['dependencies']
+        $deps = !empty( $css_file_headers['dependencies'] ) ? explode( ',', $css_file_headers['dependencies'] ) : null;
+
+        // Create the $args array that will be passed as an argument to the enqueue function
         $args = array();
+        $args = array_merge( $args, array( 'handle' => $handle ) );
+        $args = array_merge( $args, array( 'path' => $file_path ) );
+        $args = !is_null( $src ) ? array_merge( $args, array( 'src' => $src ) ) : $args;
+        $args = !is_null( $deps ) ? array_merge( $args, array( 'deps' => $deps ) ) : $args;
+        $args = !is_null( $version ) ? array_merge( $args, array( 'ver' => $version ) ) : $args;
+        $args = !empty( $css_file_headers['media'] ) ? array_merge( $args, array( 'media' => $css_file_headers['media'] ) ) : $args;
         $args = !empty( $css_file_headers['load_in'] ) ? array_merge( $args, array( 'load_in' => $css_file_headers['load_in'] ) ) : $args;
         $args = !empty( $css_file_headers['loading_method'] ) ? array_merge( $args, array( 'loading_method' => $css_file_headers['loading_method'] ) ) : $args;
         $args = !empty( $css_file_headers['critical'] ) ? array_merge( $args, array( 'critical' => filter_var( $css_file_headers['critical'], FILTER_VALIDATE_BOOLEAN ) ) ) : $args;
@@ -203,8 +227,6 @@ function enqueue_custom_block_patterns_styles() {
         dynamically_enqueue_custom_block_style( 
             $css_file_headers['block_name'],
             $css_file_headers['class_name'], 
-            $file_path, 
-            $version,
             $args
         );
     }

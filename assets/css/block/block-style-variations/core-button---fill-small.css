@@ -1,0 +1,5 @@
+/*!
+ Name: fill-small
+ Block Name: core/button
+ Class Name: is-style-fill-small
+ */:where(.wp-block-button).is-style-fill-small>.wp-block-button__link{font-size:var(--wp--preset--font-size--small);padding:.675em 1em}

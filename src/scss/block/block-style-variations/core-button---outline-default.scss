@@ -1,0 +1,13 @@
+/*!
+ Name: outline-default
+ Block Name: core/button
+ Class Name: is-style-outline-default
+ */
+:where(.wp-block-button) {
+    &.is-style-outline-default {
+        > .wp-block-button__link {
+            color: currentColor;
+            background-color: transparent;
+        }
+    }
+}

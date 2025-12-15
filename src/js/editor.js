@@ -20,6 +20,10 @@ import domReady from '@wordpress/dom-ready';
 domReady( () => {
     const blocks = [
         {
+            'blockName': 'core/button',
+            'styleVariations': [ 'outline' ],
+        },
+        {
             'blockName': 'core/separator',
             'styleVariations':  [ 'wide', 'dots' ],
         },

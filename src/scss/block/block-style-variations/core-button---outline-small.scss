@@ -1,0 +1,15 @@
+/*!
+ Name: outline-small
+ Block Name: core/button
+ Class Name: is-style-outline-small
+ */
+:where(.wp-block-button) {
+    &.is-style-outline-small {
+        > .wp-block-button__link {
+            color: currentColor;
+            background-color: transparent;
+            font-size: var(--wp--preset--font-size--small);
+            padding: 0.675em 1em;
+        }
+    }
+}

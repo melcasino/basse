@@ -41,6 +41,35 @@ add_action( 'after_setup_theme', THEME_NS . '\set_theme_defaults' );
 
 
 /**
+ * Register style variations
+ * 
+ */
+function register_block_style_variations() {
+    $block_styles = array(
+        'core/button'   =>  array(
+            'outline-default'   =>  __( 'Outline', 'basse'),    
+            'fill-small'        =>  __( 'Fill - Small', 'basse'),
+            'outline-small'     =>  __( 'Outline - Small', 'basse'),
+        ),
+    );
+
+    foreach ( $block_styles as $block => $styles ) {
+		foreach ( $styles as $style_name => $style_label ) {
+			register_block_style(
+				$block,
+				array(
+					'name'  =>  $style_name,
+					'label' =>  $style_label,
+				)
+			);
+		}
+	}
+}
+add_action( 'init', THEME_NS . '\register_block_style_variations' );
+
+
+
+/**
  * Register pattern categories
  * 
  */

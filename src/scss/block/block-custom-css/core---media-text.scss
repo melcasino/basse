@@ -1,0 +1,11 @@
+//
+// Custom CSS for core/media-text block
+//
+
+
+
+.wp-block-media-text {
+    & > &__content {
+        padding-inline: 0;
+    }
+}

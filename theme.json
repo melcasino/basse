@@ -302,7 +302,43 @@
 				"css": "& { transition: all 0.2s ease-out; text-decoration-color: transparent; } &:where(:hover, :focus, :focus-visible) { text-decoration-color: currentColor; }"
 			}
 		},
-		"blocks": {},
+		"blocks": {
+			"core/accordion": {
+				"spacing": {
+					"blockGap": "var:preset|spacing|small"
+				}
+			},
+			"core/accordion-item": {
+				"color": {
+					"background": "var:preset|color|white"
+				},
+				"spacing": {
+					"blockGap": "0"
+				},
+				"border": {
+					"style": "solid",
+					"width": "1px",
+					"color": "var:preset|color|light-gray",
+					"radius": "var:custom|border|radius|medium"
+				}
+			},
+			"core/accordion-heading": {
+				"typography": {
+					"fontSize": "inherit",
+					"fontWeight": "var:custom|typography|font-weight|semi-bold"
+				},
+				"css": "&__toggle { padding: var(--wp--preset--spacing--small); } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
+			},
+			"core/accordion-panel":{
+				"spacing": {
+					"padding": {
+						"right": "var:preset|spacing|small",
+						"bottom": "var:preset|spacing|small",
+						"left": "var:preset|spacing|small"
+					}
+				}
+			}
+		},
 		"css": ":root :where(.is-layout-flow) > :is(h1, h2, h3, h4, h5, h6) { margin-block-start: var(--wp--preset--spacing--large); }"
 	},
 	"templateParts": [

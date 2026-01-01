@@ -327,7 +327,7 @@
 					"fontSize": "inherit",
 					"fontWeight": "var:custom|typography|font-weight|semi-bold"
 				},
-				"css": "&__toggle { padding: var(--wp--preset--spacing--small); } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
+				"css": "&__toggle { padding: var(--wp--preset--spacing--small); gap: 0.5rem; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
 			},
 			"core/accordion-panel":{
 				"spacing": {

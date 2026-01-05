@@ -1,0 +1,44 @@
+//
+// Custom CSS for core/accordion-panel block
+//
+
+
+
+:where(.wp-block-accordion-item) {
+    .wp-block-accordion-panel {
+        height: 0;
+        opacity: 0;
+        overflow: clip;
+
+        @media(prefers-reduced-motion: no-preference) {
+            transition-property: display, padding-block, opacity, height;
+            transition-duration: var(--wp--custom--defaults--transition-duration, 0.25s);
+            transition-timing-function: ease-in-out;
+            transition-behavior: allow-discrete;
+        }
+    }
+
+    &.is-open {
+        .wp-block-accordion-panel {
+            padding-block-end: var(--wp--preset--spacing--small);
+            opacity: 1;
+            height: auto;
+            
+            @media(prefers-reduced-motion: no-preference) {
+                @starting-style {
+                    opacity: 0;
+                    height: 0;
+                    padding-block: 0!important;
+                }
+            }
+        }
+    }
+
+    @media(prefers-reduced-motion: no-preference) {
+        &:not(.is-open) {
+            > .wp-block-accordion-panel {
+                padding-block: 0!important;
+            }
+        }
+    }
+}

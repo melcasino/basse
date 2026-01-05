@@ -1,0 +1,21 @@
+//
+// Custom CSS for core/accordion-heading block
+//
+
+
+
+.wp-block-accordion-heading {
+    :where(.wp-block-accordion-heading__toggle) {
+        &:is(:hover, :focus) {
+            padding: var(--wp--preset--spacing--small);
+        }
+    }
+
+    & &__toggle {
+        @media(prefers-reduced-motion: no-preference) {
+            span.wp-block-accordion-heading__toggle-icon {
+                transition-duration: var(--wp--custom--defaults--transition-duration, 0.25s);
+            }
+        }
+    }
+}

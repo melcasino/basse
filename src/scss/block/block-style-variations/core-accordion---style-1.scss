@@ -1,0 +1,24 @@
+/*!
+ Name: core-accordion-style-1
+ Block Name: core/accordion
+ Class Name: is-style-core-accordion-style-1
+ */
+:where(.wp-block-accordion.is-style-core-accordion-style-1) {
+    .wp-block-accordion-heading__toggle-icon {
+        display: none; 
+    }
+    
+    :where(.wp-block-accordion-heading__toggle:has(.wp-block-accordion-heading__toggle-icon + .wp-block-accordion-heading__toggle-title))::before,
+    :where(.wp-block-accordion-heading__toggle:has(.wp-block-accordion-heading__toggle-title + .wp-block-accordion-heading__toggle-icon))::after {
+        content: '∟';
+        font-size: 102%;
+        line-height: 0.45;
+        aspect-ratio: 1;
+        transform: rotateZ(315deg); 
+    }
+
+    :where(.wp-block-accordion-item.is-open .wp-block-accordion-heading__toggle)::before,
+    :where(.wp-block-accordion-item.is-open .wp-block-accordion-heading__toggle)::after{
+        transform: rotateZ(135deg);
+    }
+}

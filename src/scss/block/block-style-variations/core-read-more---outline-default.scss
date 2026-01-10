@@ -1,0 +1,11 @@
+/*!
+ Name: outline-default
+ Block Name: core/read-more
+ Class Name: is-style-outline-default
+ */
+.wp-block-read-more {
+    &.is-style-outline-default {
+        color: currentColor;
+        background-color: transparent;
+    }
+}

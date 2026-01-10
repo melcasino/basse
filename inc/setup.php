@@ -53,6 +53,11 @@ function register_block_style_variations() {
             'outline-default'       =>  __( 'Outline', 'basse' ),
             'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
+        'core/read-more'       =>  array(
+            'outline-default'   =>  __( 'Outline', 'basse' ),    
+            'fill-small'        =>  __( 'Fill - Small', 'basse' ),
+            'outline-small'     =>  __( 'Outline - Small', 'basse' ),
+        ),
         'core/accordion'    =>  array(
             'core-accordion-style-1'    =>  __( 'Style 1', 'basse' ),
         ),

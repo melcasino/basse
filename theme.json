@@ -329,7 +329,7 @@
 				},
 				"css": "&__toggle { padding: var(--wp--preset--spacing--small); gap: 0.5rem; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
 			},
-			"core/accordion-panel":{
+			"core/accordion-panel": {
 				"spacing": {
 					"padding": {
 						"right": "var:preset|spacing|small",
@@ -337,6 +337,31 @@
 						"left": "var:preset|spacing|small"
 					}
 				}
+			},
+			"core/read-more": {
+				"color": {
+					"text": "var:preset|color|white",
+					"background": "var:preset|color|black"
+				},
+				"typography": {
+					"lineHeight": "var:custom|typography|line-height|x-small",
+					"textDecoration": "underline"
+				},
+				"spacing": {
+					"padding": {
+						"top": ".75em",
+						"right": "1.125em",
+						"bottom": ".75em",
+						"left": "1.125em"
+					}
+				},
+				"border": {
+					"style": "solid",
+					"width": "1px",
+					"color": "var:preset|color|black",
+					"radius": "var:custom|border|radius|medium"
+				},
+				"css": "& { transition: all 0.2s ease-out; text-decoration-color: transparent; } &:where(:hover, :focus, :focus-visible) { background-color: var(--wp--preset--color--dark-gray); text-decoration-color: currentColor; }"
 			}
 		},
 		"css": ":root :where(.is-layout-flow) > :is(h1, h2, h3, h4, h5, h6) { margin-block-start: var(--wp--preset--spacing--large); }"

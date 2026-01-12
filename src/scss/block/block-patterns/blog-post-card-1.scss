@@ -1,0 +1,15 @@
+/*!
+ Name: Blog Post Card 1
+ Block Name: core/group
+ Class Name: basse-pattern-blog-post-card-1
+ */
+
+
+
+ :where(.wp-block-group) {
+    &:where(.basse-pattern-blog-post-card-1) {
+        :where(.wp-block-post-featured-image) {
+            order: -1;
+        }
+    }
+ }

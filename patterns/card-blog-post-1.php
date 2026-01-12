@@ -28,7 +28,7 @@
                 <p><?php esc_html_e( 'Posted on:', 'basse' ); ?></p>
                 <!-- /wp:paragraph -->
 
-                <!-- wp:post-date {"datetime":"2026-01-08T13:00:42.530Z","format":"M j, Y"} /-->
+                <!-- wp:post-date {"datetime":"2026-01-08T13:00:42.530Z","format":"M j, Y","metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
             </div>
             <!-- /wp:group -->
 

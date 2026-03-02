@@ -65,6 +65,21 @@ function modify_block_supports( $args, $block_type ) {
             )
         ),
         array(
+            'block_name'    =>  'core/query-pagination',
+            'supports'      =>  array(
+                'spacing'	=>	array(
+                    'padding'						=>	true,
+                    'margin'						=>	array( 'top', 'bottom' ),
+                    'blockGap'						=>	true,
+                    '__experimentalDefaultControls'	=>	array(
+                        'padding'	=>	true,
+                        'margin'	=>	true,
+                        'blockGap'	=>	false,
+                    )
+                ),
+            )
+        ),
+        array(
             'block_name'    =>  'core/post-content',
             'supports'      =>  array(
                 'interactivity'  =>	array(

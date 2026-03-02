@@ -52,6 +52,12 @@ function modify_block_supports( $args, $block_type ) {
         array(
             'block_name'    =>  'core/query',
             'supports'      =>  array(
+                'color'     =>  array(
+                    'text'                          =>  false,
+                    '__experimentalDefaultControls' =>  array(
+                        'background'    =>  true,
+                    ),       
+                ),
                 'spacing'	=>	array(
                     'padding'						=>	true,
                     'margin'						=>	array( 'top', 'bottom' ),

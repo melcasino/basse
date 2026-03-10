@@ -343,25 +343,17 @@
 					}
 				},
 				"border": {
-					"style": "solid",
-					"width": "1px",
-					"color": "var:preset|color|black",
+					"style": "none",
 					"radius": "var:custom|border|radius|medium"
 				},
 				":hover": {
 					"color": {
-						"background": "var:preset|color|dark-gray"
-					},
-					"border": {
-						"color": "var:preset|color|dark-gray"
+						"background": "var:preset|color|neutral-700"
 					}
 				},
 				":focus": {
 					"color": {
-						"background": "var:preset|color|dark-gray"
-					},
-					"border": {
-						"color": "var:preset|color|dark-gray"
+						"background": "var:preset|color|neutral-700"
 					},
 					"outline": {
 						"offset": "3px"

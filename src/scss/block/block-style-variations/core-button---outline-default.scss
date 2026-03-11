@@ -6,8 +6,12 @@
 :where(.wp-block-button) {
     &.is-style-outline-default {
         > .wp-block-button__link {
+            --_border-width: 1px;
+
             color: currentColor;
             background-color: transparent;
+            padding: calc(0.75em - var(--_border-width)) calc(1.125em - var(--_border-width));
+            border: solid var(--_border-width);
         }
     }
 }

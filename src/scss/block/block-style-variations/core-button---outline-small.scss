@@ -6,10 +6,13 @@
 :where(.wp-block-button) {
     &.is-style-outline-small {
         > .wp-block-button__link {
+            --_border-width: 1px;
+
             color: currentColor;
             background-color: transparent;
             font-size: var(--wp--preset--font-size--small);
-            padding: 0.675em 1em;
+            padding: calc(0.675em - var(--_border-width)) calc(1em - var(--_border-width));
+            border: solid var(--_border-width);
         }
     }
 }

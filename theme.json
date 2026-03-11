@@ -348,12 +348,12 @@
 				},
 				":hover": {
 					"color": {
-						"background": "var:preset|color|neutral-700"
+						"background": "var:preset|color|neutral-800"
 					}
 				},
 				":focus": {
 					"color": {
-						"background": "var:preset|color|neutral-700"
+						"background": "var:preset|color|neutral-800"
 					},
 					"outline": {
 						"offset": "3px"

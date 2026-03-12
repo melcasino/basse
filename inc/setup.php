@@ -47,9 +47,10 @@ add_action( 'after_setup_theme', THEME_NS . '\set_theme_defaults' );
 function register_block_style_variations() {
     $block_styles = array(
         'core/button'       =>  array(
-            'outline-default'   =>  __( 'Outline', 'basse' ),    
-            'fill-small'        =>  __( 'Fill - Small', 'basse' ),
-            'outline-small'     =>  __( 'Outline - Small', 'basse' ),
+            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),    
+            'outline-default'       =>  __( 'Outline', 'basse' ),
+            'fill-small'            =>  __( 'Fill - Small', 'basse' ),
+            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
         'core/accordion'    =>  array(
             'core-accordion-style-1'    =>  __( 'Style 1', 'basse' ),

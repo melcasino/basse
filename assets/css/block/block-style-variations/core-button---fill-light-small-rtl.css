@@ -1,0 +1,5 @@
+/*!
+ Name: fill-light-small
+ Block Name: core/button
+ Class Name: is-style-fill-light-small
+ */:where(.wp-block-button).is-style-fill-light-small>.wp-block-button__link{font-size:var(--wp--preset--font-size--small);color:var(--wp--preset--color--black);background-color:var(--wp--preset--color--neutral-100);padding:.675em 1em}:where(.wp-block-button).is-style-fill-light-small>.wp-block-button__link:where(:hover,:focus,:focus-visible){background-color:var(--wp--preset--color--neutral-200)}

@@ -15,16 +15,6 @@
 					"slug": "white"
 				},
 				{
-					"color": "#DEE2E6",
-					"name": "Light Gray",
-					"slug": "light-gray"
-				},
-				{
-					"color": "#495057",
-					"name": "Dark Gray",
-					"slug": "dark-gray"
-				},
-				{
 					"color": "#000000",
 					"name": "Black",
 					"slug": "black"

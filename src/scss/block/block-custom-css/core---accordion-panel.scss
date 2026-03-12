@@ -20,7 +20,7 @@
 
     &.is-open {
         .wp-block-accordion-panel {
-            padding-block-end: var(--wp--preset--spacing--small);
+            padding-block-end: var(--_padding-inline);
             opacity: 1;
             height: auto;
             

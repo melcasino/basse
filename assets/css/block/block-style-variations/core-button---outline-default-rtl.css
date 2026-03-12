@@ -2,4 +2,4 @@
  Name: outline-default
  Block Name: core/button
  Class Name: is-style-outline-default
- */:where(.wp-block-button).is-style-outline-default>.wp-block-button__link{color:currentColor;background-color:rgba(0,0,0,0)}
+ */:where(.wp-block-button).is-style-outline-default>.wp-block-button__link{--_border-width:1px;color:currentColor;background-color:rgba(0,0,0,0);padding:calc(.75em - 1px) calc(1.125em - 1px);padding:calc(.75em - var(--_border-width)) calc(1.125em - var(--_border-width));border:solid 1px;border:solid var(--_border-width)}

@@ -7,7 +7,7 @@
 .wp-block-accordion-heading {
     :where(.wp-block-accordion-heading__toggle) {
         &:is(:hover, :focus) {
-            padding: var(--wp--preset--spacing--small);
+            padding: var(--_padding-block) var(--_padding-inline);
         }
     }
 

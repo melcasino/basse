@@ -15,19 +15,64 @@
 					"slug": "white"
 				},
 				{
-					"color": "#DEE2E6",
-					"name": "Light Gray",
-					"slug": "light-gray"
-				},
-				{
-					"color": "#495057",
-					"name": "Dark Gray",
-					"slug": "dark-gray"
-				},
-				{
 					"color": "#000000",
 					"name": "Black",
 					"slug": "black"
+				},
+				{
+					"color": "var:custom|color|gray-50",
+					"name": "Neutral 50",
+					"slug": "neutral-50"
+				},
+				{
+					"color": "var:custom|color|gray-100",
+					"name": "Neutral 100",
+					"slug": "neutral-100"
+				},
+				{
+					"color": "var:custom|color|gray-200",
+					"name": "Neutral 200",
+					"slug": "neutral-200"
+				},
+				{
+					"color": "var:custom|color|gray-300",
+					"name": "Neutral 300",
+					"slug": "neutral-300"
+				},
+				{
+					"color": "var:custom|color|gray-400",
+					"name": "Neutral 400",
+					"slug": "neutral-400"
+				},
+				{
+					"color": "var:custom|color|gray-500",
+					"name": "Neutral 500",
+					"slug": "neutral-500"
+				},
+				{
+					"color": "var:custom|color|gray-600",
+					"name": "Neutral 600",
+					"slug": "neutral-600"
+				},
+				{
+					"color": "var:custom|color|gray-700",
+					"name": "Neutral 700",
+					"slug": "neutral-700"
+				},
+				{
+					"color": "var:custom|color|gray-800",
+					"name": "Neutral 800",
+					"slug": "neutral-800"
+				},
+				{
+					"color": "var:custom|color|gray-900",
+					"name": "Neutral 900",
+					"slug": "neutral-900"
+				},
+				{
+					"color": "var:custom|color|gray-950",
+					"name": "Neutral 950",
+					"slug": "neutral-950"
 				}
 			]
 		},
@@ -160,6 +205,19 @@
 			"defaults": {
 				"transition-duration": "0.25s"
 			},
+			"color": {
+				"gray-50": "#f2f2f2",
+				"gray-100": "#e6e6e6",
+				"gray-200": "#cccccc",
+				"gray-300": "#b3b3b3",
+				"gray-400": "#999999",
+				"gray-500": "#808080",
+				"gray-600": "#666666",
+				"gray-700": "#4d4d4d",
+				"gray-800": "#333333",
+				"gray-900": "#1a1a1a",
+				"gray-950": "#0d0d0d"
+			},
 			"typography": {
 				"lineHeight": {
 					"none": 1,
@@ -275,25 +333,17 @@
 					}
 				},
 				"border": {
-					"style": "solid",
-					"width": "1px",
-					"color": "var:preset|color|black",
+					"style": "none",
 					"radius": "var:custom|border|radius|medium"
 				},
 				":hover": {
 					"color": {
-						"background": "var:preset|color|dark-gray"
-					},
-					"border": {
-						"color": "var:preset|color|dark-gray"
+						"background": "var:preset|color|neutral-800"
 					}
 				},
 				":focus": {
 					"color": {
-						"background": "var:preset|color|dark-gray"
-					},
-					"border": {
-						"color": "var:preset|color|dark-gray"
+						"background": "var:preset|color|neutral-800"
 					},
 					"outline": {
 						"offset": "3px"
@@ -306,19 +356,16 @@
 			"core/accordion": {
 				"spacing": {
 					"blockGap": "var:preset|spacing|small"
-				}
+				},
+				"css": "--_padding-block: 0.75em; --_padding-inline: 1.125em;"
 			},
 			"core/accordion-item": {
-				"color": {
-					"background": "var:preset|color|white"
-				},
 				"spacing": {
 					"blockGap": "0"
 				},
 				"border": {
 					"style": "solid",
 					"width": "1px",
-					"color": "var:preset|color|light-gray",
 					"radius": "var:custom|border|radius|medium"
 				}
 			},
@@ -327,14 +374,14 @@
 					"fontSize": "inherit",
 					"fontWeight": "var:custom|typography|font-weight|semi-bold"
 				},
-				"css": "&__toggle { padding: var(--wp--preset--spacing--small); gap: 0.5rem; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
+				"css": "&__toggle { padding: var(--_padding-block) var(--_padding-inline); gap: 0.5rem; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
 			},
 			"core/accordion-panel": {
 				"spacing": {
 					"padding": {
-						"right": "var:preset|spacing|small",
-						"bottom": "var:preset|spacing|small",
-						"left": "var:preset|spacing|small"
+						"right": "var(--_padding-inline)",
+						"bottom": "var(--_padding-inline)",
+						"left": "var(--_padding-inline)"
 					}
 				}
 			},

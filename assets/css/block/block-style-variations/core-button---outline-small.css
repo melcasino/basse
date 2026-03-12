@@ -2,4 +2,4 @@
  Name: outline-small
  Block Name: core/button
  Class Name: is-style-outline-small
- */:where(.wp-block-button).is-style-outline-small>.wp-block-button__link{color:currentColor;background-color:rgba(0,0,0,0);font-size:var(--wp--preset--font-size--small);padding:.675em 1em}
+ */:where(.wp-block-button).is-style-outline-small>.wp-block-button__link{--_border-width:1px;color:currentColor;background-color:rgba(0,0,0,0);font-size:var(--wp--preset--font-size--small);padding:calc(.675em - 1px) calc(1em - 1px);padding:calc(.675em - var(--_border-width)) calc(1em - var(--_border-width));border:solid 1px;border:solid var(--_border-width)}

@@ -14,7 +14,11 @@
         font-size: 102%;
         line-height: 0.45;
         aspect-ratio: 1;
-        transform: rotateZ(315deg); 
+        transform: rotateZ(315deg);
+        
+        @media(prefers-reduced-motion: no-preference) {
+            transition: transform var(--wp--custom--defaults--transition-duration, 0.25s) ease-in-out;
+        }
     }
 
     :where(.wp-block-accordion-item.is-open .wp-block-accordion-heading__toggle)::before,

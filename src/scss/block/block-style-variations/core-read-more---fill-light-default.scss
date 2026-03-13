@@ -1,0 +1,15 @@
+/*!
+ Name: fill-light-default
+ Block Name: core/read-more
+ Class Name: is-style-fill-light-default
+ */
+ .wp-block-read-more {
+    &.is-style-fill-light-default {
+        color: currentColor;
+        background-color: var(--wp--preset--color--neutral-100);
+
+        &:where(:hover, :focus, :focus-visible) {
+            background-color: var(--wp--preset--color--neutral-200);
+        }
+    }
+}

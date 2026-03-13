@@ -403,12 +403,9 @@
 					}
 				},
 				"border": {
-					"style": "solid",
-					"width": "1px",
-					"color": "var:preset|color|black",
 					"radius": "var:custom|border|radius|medium"
 				},
-				"css": "& { text-align: center; width: auto; transition: all 0.2s ease-out; text-decoration-color: transparent; } &:where(:hover, :focus, :focus-visible) { background-color: var(--wp--preset--color--dark-gray); border-color: var(--wp--preset--color--dark-gray); text-decoration-color: currentColor; }"
+				"css": "& { text-align: center; width: auto; transition: all 0.2s ease-out; text-decoration-color: transparent; } &:where(:hover, :focus, :focus-visible) { background-color: var(--wp--preset--color--neutral-800); text-decoration-color: currentColor; }"
 			}
 		},
 		"css": ":root :where(.is-layout-flow) > :is(h1, h2, h3, h4, h5, h6) { margin-block-start: var(--wp--preset--spacing--large); }"

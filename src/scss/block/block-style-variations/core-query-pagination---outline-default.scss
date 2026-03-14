@@ -1,0 +1,27 @@
+/*!
+ Name: outline-default
+ Block Name: core/query-pagination
+ Class Name: is-style-outline-default
+ */
+.wp-block-query-pagination:where(.is-style-outline-default) {
+    --_border-width: 1px;
+
+    a, 
+    .page-numbers {
+        display: inline-block;
+        color: currentColor;
+        text-decoration-color: transparent;
+        line-height: var(--wp--custom--typography--line-height--x-small);
+        padding: calc(0.75em - var(--_border-width)) calc(1.125em - var(--_border-width));
+        border: solid var(--_border-width);
+        border-radius: var(--wp--custom--border--radius--medium);
+        transition-property: text-decoration-color;
+        transition-duration: var(--wp--custom--defaults--transition-duration);
+        transition-timing-function: ease-in-out;
+
+        &:where(.current, :hover, :focus, :focus-visible) {
+            text-decoration: underline;
+            text-decoration-color: currentColor;
+        }
+    }
+}

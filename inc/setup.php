@@ -66,6 +66,7 @@ function register_block_style_variations() {
         'core/query-pagination' =>  array(
             'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
             'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
+            'outline-default'       =>  __( 'Outline', 'basse' ),
         ),
     );
 

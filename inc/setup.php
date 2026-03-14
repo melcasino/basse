@@ -46,15 +46,28 @@ add_action( 'after_setup_theme', THEME_NS . '\set_theme_defaults' );
  */
 function register_block_style_variations() {
     $block_styles = array(
-        'core/button'       =>  array(
+        'core/button'           =>  array(
             'fill-small'            =>  __( 'Fill - Small', 'basse' ),
             'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
             'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),    
             'outline-default'       =>  __( 'Outline', 'basse' ),
             'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
-        'core/accordion'    =>  array(
+        'core/read-more'        =>  array(
+            'fill-small'            =>  __( 'Fill - Small', 'basse' ),
+            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
+            'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
+            'outline-default'       =>  __( 'Outline', 'basse' ),    
+            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
+        ),
+        'core/accordion'        =>  array(
             'core-accordion-style-1'    =>  __( 'Style 1', 'basse' ),
+        ),
+        'core/query-pagination' =>  array(
+            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
+            'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
+            'outline-default'       =>  __( 'Outline', 'basse' ),
+            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
     );
 

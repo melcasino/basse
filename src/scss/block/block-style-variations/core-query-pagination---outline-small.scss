@@ -1,0 +1,28 @@
+/*!
+ Name: outline-small
+ Block Name: core/query-pagination
+ Class Name: is-style-outline-small
+ */
+.wp-block-query-pagination:where(.is-style-outline-small) {
+    --_border-width: 1px;
+
+    a, 
+    .page-numbers {
+        display: inline-block;
+        color: currentColor;
+        font-size: var(--wp--preset--font-size--small);
+        text-decoration-color: transparent;
+        line-height: var(--wp--custom--typography--line-height--x-small);
+        padding: calc(0.675em - var(--_border-width)) calc(1em - var(--_border-width));
+        border: solid var(--_border-width);
+        border-radius: var(--wp--custom--border--radius--medium);
+        transition-property: text-decoration-color;
+        transition-duration: var(--wp--custom--defaults--transition-duration);
+        transition-timing-function: ease-in-out;
+
+        &:where(.current, :hover, :focus, :focus-visible) {
+            text-decoration: underline;
+            text-decoration-color: currentColor;
+        }
+    }
+}

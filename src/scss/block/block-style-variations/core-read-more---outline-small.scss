@@ -1,0 +1,16 @@
+/*!
+ Name: outline-small
+ Block Name: core/read-more
+ Class Name: is-style-outline-small
+ */
+.wp-block-read-more {
+    &.is-style-outline-small {
+        --_border-width: 1px;
+
+        color: currentColor;
+        background-color: transparent;
+        font-size: var(--wp--preset--font-size--small);
+        padding: calc(0.675em - var(--_border-width)) calc(1em - var(--_border-width));
+        border: solid var(--_border-width);
+    }
+}

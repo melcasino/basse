@@ -1,0 +1,5 @@
+/*!
+ Name: fill-light-small
+ Block Name: core/read-more
+ Class Name: is-style-fill-light-small
+ */.wp-block-read-more.is-style-fill-light-small{color:currentColor;background-color:var(--wp--preset--color--neutral-100);font-size:var(--wp--preset--font-size--small);padding:.675em 1em}.wp-block-read-more.is-style-fill-light-small:where(:hover,:focus,:focus-visible){background-color:var(--wp--preset--color--neutral-200)}

@@ -1,0 +1,15 @@
+/*!
+ Name: outline-default
+ Block Name: core/read-more
+ Class Name: is-style-outline-default
+ */
+.wp-block-read-more {
+    &.is-style-outline-default {
+        --_border-width: 1px;
+
+        color: currentColor;
+        background-color: transparent;
+        padding: calc(0.75em - var(--_border-width)) calc(1.125em - var(--_border-width));
+        border: solid var(--_border-width);
+    }
+}

@@ -67,6 +67,7 @@ function register_block_style_variations() {
             'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
             'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
             'outline-default'       =>  __( 'Outline', 'basse' ),
+            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
     );
 

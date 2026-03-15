@@ -32,14 +32,14 @@
             </div>
             <!-- /wp:group -->
 
-            <!-- wp:group {"tagName":"address","style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-            <address class="wp-block-group">
+            <!-- wp:group {"style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+            <div class="wp-block-group">
                 <!-- wp:paragraph -->
                 <p><?php esc_html_e( 'By:', 'basse' ); ?></p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:post-author-name /-->
-            </address>
+            </div>
             <!-- /wp:group -->
         </div>
         <!-- /wp:group -->

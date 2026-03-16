@@ -12,6 +12,7 @@
         text-decoration-color: transparent;
         line-height: var(--wp--custom--typography--line-height--x-small);
         padding: 0.75em 1.125em;
+        margin-right: 0;
         border-radius: var(--wp--custom--border--radius--medium);
         transition-property: background-color, text-decoration-color;
         transition-duration: var(--wp--custom--defaults--transition-duration);
@@ -21,6 +22,17 @@
             background-color: var(--wp--preset--color--neutral-200);
             text-decoration: underline;
             text-decoration-color: currentColor;
+        }
+    }
+
+    .wp-block-query-pagination-numbers {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    @media(max-width: 599px) {
+        .wp-block-query-pagination-numbers {
+            display: none;
         }
     }
 }

@@ -3,7 +3,7 @@
  * Title: Home Template
  * Slug: basse/template-home-grid
  * Description: A three column grid layout for blog posts and archive pages.
- * Categories: query
+ * Categories: basse/templates
  * Keywords: blog, posts, query, loop
  * Block Types:
  * Post Types:

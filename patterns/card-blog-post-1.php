@@ -50,7 +50,7 @@
 
     <!-- wp:post-excerpt {"moreText":"","showMoreOnNewLine":false,"excerptLength":18,"style":{"layout":{"selfStretch":"fill","flexSize":null}}} /-->
 
-    <!-- wp:group {"tagName":"footer","metadata":{"name":"Article Footer"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|small"}}},"layout":{"type":"constrained"}} -->
+    <!-- wp:group {"tagName":"footer","metadata":{"name":"Article Footer"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|small"}}},"layout":{"type":"default"}} -->
     <footer class="wp-block-group" style="margin-top:var(--wp--preset--spacing--small)">
         <!-- wp:read-more {"content":"Continue Reading","className":"is-style-fill-light-small","style":{"layout":{"selfStretch":"fit","flexSize":null}}} /-->
     </footer>

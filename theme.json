@@ -429,9 +429,9 @@
 	],
 	"customTemplates": [
 		{
-			"name": "page-no-title",
+			"name": "page-full-no-title",
 			"postTypes": ["page"],
-			"title": "Page No Title"
+			"title": "Page (Full Width, No Title)"
 		}
 	]
 }

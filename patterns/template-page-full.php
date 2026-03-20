@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Page Full
+ * Title: Page Full Width No Title
  * Slug: basse/template-page-full
  * Description: A full-width layout with no page title, perfect for building pages using patterns or from scratch.
  * Categories: basse/templates

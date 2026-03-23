@@ -12,20 +12,16 @@ input, textarea, select {
     padding: 0.75em 1.125em;
     border: solid 1px var(--wp--preset--color--black);
     border-radius: var(--wp--custom--border--radius--medium);
-    width: 100%;
     outline-offset: 3px;
 }
 
+input:where(:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"], [type="image"])), 
 textarea,
-input[type="checkbox"],
-input[type="radio"] {
-    display: block;
+select {
+    width: 100%;
 }
 
-input[type="checkbox"],
-input[type="radio"],
-input[type="image"] {
-    width: auto;
+input:where([type="checkbox"], [type="radio"], [type="image"], [type="file"], [type="date"]) {
     cursor: pointer;
 }
 
@@ -38,4 +34,5 @@ select {
 
 label {
 	display: block;
+    line-height: var(--wp--custom--typography--line-height--x-small);
 }

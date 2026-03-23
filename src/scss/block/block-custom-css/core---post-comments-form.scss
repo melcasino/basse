@@ -19,7 +19,7 @@
             grid-template-columns: 1fr 1fr;
         }
 
-        > * {
+        > :where(:not(.logged-in-as, .comment-notes)) {
             margin-block: 0;
         }
 

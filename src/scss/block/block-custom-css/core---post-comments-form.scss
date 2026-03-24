@@ -28,6 +28,7 @@
         }
 
         > :where(.comment-form-cookies-consent) {
+            font-size: var(--wp--preset--font-size--small);
             align-items: start;
         }
     }

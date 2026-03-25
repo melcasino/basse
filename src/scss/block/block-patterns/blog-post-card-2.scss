@@ -6,8 +6,18 @@
 
 
 
+@use '../../partials/mixins';
+
 :where(.wp-block-group.basse-pattern-blog-post-card-2) {
     position: relative;
+
+    .wp-block-post-title {
+        text-wrap: balance;
+    }
+
+    .wp-block-post-title > a {
+        @include mixins.truncate($line-limit: 3);
+    }
 
     :where(.wp-block-post-title > a):before {
         content: '';

@@ -26,6 +26,6 @@
     </div>
     <!-- /wp:group -->
 
-    <!-- wp:post-featured-image {"aspectRatio":"1","height":"","sizeSlug":"full"} /-->
+    <!-- wp:post-featured-image {"aspectRatio":"1","height":"","sizeSlug":"thumbnail"} /-->
 </article>
 <!-- /wp:group -->

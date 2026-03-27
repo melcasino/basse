@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Comments
- * Slug: basse/comments-1
+ * Slug: basse/comments
  * Description: A comment secton with a list of comments for a post and a comment form.
  * Categories: 
  * Keywords: post comments, comments, comment form

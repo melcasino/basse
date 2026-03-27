@@ -1,0 +1,14 @@
+//
+// Mixins
+//
+
+
+
+// CSS text truncate
+@mixin truncate($line-limit: 3) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line-limit;    // Limit to how many lines you set in the $line-limit variable
+    text-overflow: ellipsis;            // Add ellipsis (...) at the end
+}

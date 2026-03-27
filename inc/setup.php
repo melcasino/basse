@@ -69,6 +69,9 @@ function register_block_style_variations() {
             'outline-default'       =>  __( 'Outline', 'basse' ),
             'outline-small'         =>  __( 'Outline - Small', 'basse' ),
         ),
+        'core/post-navigation-link' =>  array(
+            'label-on-top' =>  __( 'Label On Top', 'basse' ),
+        )
     );
 
     foreach ( $block_styles as $block => $styles ) {

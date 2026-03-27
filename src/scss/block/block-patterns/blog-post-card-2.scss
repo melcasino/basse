@@ -1,0 +1,31 @@
+/*!
+ Name: Blog Post Card 2
+ Block Name: core/group
+ Class Name: basse-pattern-blog-post-card-2
+ */
+
+
+
+@use '../../partials/mixins';
+
+:where(.wp-block-group.basse-pattern-blog-post-card-2) {
+    position: relative;
+
+    .wp-block-post-title {
+        text-wrap: balance;
+    }
+
+    .wp-block-post-title > a {
+        @include mixins.truncate($line-limit: 3);
+    }
+
+    :where(.wp-block-post-title > a):before {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+
+    .wp-block-post-featured-image {
+        order: -1;
+    }
+}

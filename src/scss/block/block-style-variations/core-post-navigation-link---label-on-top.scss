@@ -1,0 +1,11 @@
+/*!
+ Name: label-on-top
+ Block Name: core/post-navigation-link
+ Class Name: is-style-label-on-top
+ */
+.wp-block-post-navigation-link {
+    &.is-style-label-on-top {
+        display: flex;
+        flex-direction: column;
+    }
+}

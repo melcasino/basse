@@ -62,7 +62,7 @@ function load_editor_css() {
         )
     );
 }
-add_action( 'after_theme_setup', THEME_NS . '\load_editor_CSS' );
+add_action( 'after_setup_theme', THEME_NS . '\load_editor_css' );
 
 
 

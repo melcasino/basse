@@ -3,7 +3,7 @@
  * Title: Social Share Links 1
  * Slug: basse/social-share-links-1
  * Description: Icon button style social sharing links in a horizontal layout.
- * Categories: query
+ * Categories:
  * Keywords: social sharing, share links, share buttons, social
  * Block Types:
  * Post Types:

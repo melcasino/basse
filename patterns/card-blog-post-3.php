@@ -16,8 +16,8 @@
  */ 
 ?>
 
-<!-- wp:group {"tagName":"article","metadata":{"name":"Article"},"className":"basse-pattern-blog-post-3","style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"default"}} -->
-<article class="wp-block-group basse-pattern-blog-post-3">
+<!-- wp:group {"tagName":"article","metadata":{"name":"Article"},"className":"basse-pattern-blog-post-card-3","style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"default"}} -->
+<article class="wp-block-group basse-pattern-blog-post-card-3">
     <!-- wp:post-title {"fontSize":"medium"} /-->
 
     <!-- wp:post-excerpt {"moreText":"Continue Reading","showMoreOnNewLine":false,"excerptLength":25} /-->

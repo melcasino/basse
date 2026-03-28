@@ -1,0 +1,5 @@
+/*!
+ Name: Blog Post Card 3
+ Block Name: core/group
+ Class Name: basse-pattern-blog-post-card-3
+ */:where(.wp-block-group.basse-pattern-blog-post-card-3) .wp-block-post-title{text-wrap:balance;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;text-overflow:ellipsis}

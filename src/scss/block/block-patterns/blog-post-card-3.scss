@@ -6,11 +6,15 @@
 
 
 
- @use '../../partials/mixins';
+@use '../../partials/mixins';
 
- :where(.wp-block-group.basse-pattern-blog-post-card-3) {
+:where(.wp-block-group.basse-pattern-blog-post-card-3) {
+    :where(a) {
+        color: linkText;
+    }
+
     .wp-block-post-title {
         text-wrap: balance;
         @include mixins.truncate($line-limit: 3);
     }
- }
+}

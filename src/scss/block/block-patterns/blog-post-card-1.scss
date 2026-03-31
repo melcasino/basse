@@ -6,17 +6,13 @@
 
 
 
- :where(.wp-block-group) {
+@use '../../partials/mixins';
+
+:where(.wp-block-group) {
     &:where(.basse-pattern-blog-post-card-1) {
         :where(.wp-block-post-title) {
             text-wrap: balance;
-
-            /* CSS text truncate */
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;      /* Limit to 3 lines */
-            text-overflow: ellipsis;    /* Add ellipsis (...) at the end */
+            @include mixins.truncate($line-limit: 3);
         }
 
         :where(.wp-block-post-featured-image) {
@@ -28,4 +24,4 @@
             overflow: hidden;
         }
     }
- }
+}

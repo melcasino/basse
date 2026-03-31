@@ -6,6 +6,8 @@
  * Categories: query, basse/cards
  * Keywords: card, image, text, box, content, link, button
  * Block Types: core/query, core/post-template
+ * Post Types:
+ * Template Types:
  * Viewport Width: 400
  * Inserter: true
  *

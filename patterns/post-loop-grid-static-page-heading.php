@@ -5,7 +5,7 @@
  * Description: This post loop grid is best used on index and archive pages where the loop can inherit the query from the page.
  * Categories: query
  * Keywords: blog, posts, query, loop
- * Block Types: core/query
+ * Block Types:
  * Post Types:
  * Template Types:
  * Viewport Width: 1920

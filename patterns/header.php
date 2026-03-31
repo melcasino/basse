@@ -2,10 +2,14 @@
 /**
  * Title: Header
  * Slug: basse/header
- * Categories: header
- * Block Types: core/template-part/header
- * Viewport Width: 1920
  * Description: Site header with site title and navigation.
+ * Categories: header
+ * Keywords:  header, site header
+ * Block Types: core/template-part/header
+ * Post Types:
+ * Template Types:
+ * Viewport Width: 1920
+ * Inserter: true
  *
  * @package Basse
  * @since Basse 0.1.0

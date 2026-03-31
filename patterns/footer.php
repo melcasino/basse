@@ -2,10 +2,14 @@
 /**
  * Title: Footer
  * Slug: basse/footer
- * Categories: footer
- * Block Types: core/template-part/footer
- * Viewport Width: 1920
  * Description: Footer with logo, site tile, navigation and social links
+ * Categories: footer
+ * Keywords: footer, site footer
+ * Block Types: core/template-part/footer
+ * Post Types:
+ * Template Types:
+ * Viewport Width: 1920
+ * Inserter: true
  *
  * @package Basse
  * @since Basse 0.1.0

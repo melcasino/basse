@@ -2,11 +2,14 @@
 /**
  * Title: Post loop with static page heading
  * Slug: basse/post-loop-list-static-page-heading
+ * Description: A page with a static heading and a list of all posts with title, publish date and content.
  * Categories: query
- * Block Types: core/query
+ * Keywords: index, posts, query, loop
+ * Block Types:
+ * Post Types:
+ * Template Types:
  * Viewport Width: 1920
  * Inserter: true
- * Description: A page with a static heading and a list of all posts with title, publish date and content.
  *
  * @package Basse
  * @since Basse 0.1.0

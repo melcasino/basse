@@ -2,12 +2,14 @@
 /**
  * Title: Index Template
  * Slug: basse/template-index-list
- * Template Types: front-page, home, index
+ * Description: A single column list layout for index template, blog posts and archive pages.
  * Categories: basse/templates
  * Keywords: blog, posts, query, loop
+ * Block Types:
+ * Post Types:
+ * Template Types: front-page, home, index
  * Viewport Width: 1920
  * Inserter: false
- * Description: A single column list layout for index template, blog posts and archive pages.
  *
  * @package Basse
  * @since Basse 0.1.0

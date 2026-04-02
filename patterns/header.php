@@ -22,7 +22,7 @@
     <div class="wp-block-group alignwide">
         <!-- wp:site-title {"level":0,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}},"fontSize":"medium"} /-->
 
-        <!-- wp:navigation {"ref":8,"layout":{"type":"flex","justifyContent":"space-between"}} /-->
+        <!-- wp:navigation {"ref":8,"className":"is-style-core-navigation-style-1","layout":{"type":"flex","justifyContent":"space-between"}} /-->
     </div>
     <!-- /wp:group -->
 </div>

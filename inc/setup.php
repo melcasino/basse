@@ -71,7 +71,10 @@ function register_block_style_variations() {
         ),
         'core/post-navigation-link' =>  array(
             'label-on-top' =>  __( 'Label On Top', 'basse' ),
-        )
+        ),
+        'core/navigation'       =>  array(
+            'core-navigation-style-1' =>  __( 'Style 1', 'basse' ),
+        ) 
     );
 
     foreach ( $block_styles as $block => $styles ) {

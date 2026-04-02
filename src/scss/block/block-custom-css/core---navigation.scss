@@ -4,6 +4,18 @@
 
 
 
+// Change desktop navigtion to mobile navigation breakpoint from 599px to 782px;
+@media(max-width: 782px) {
+    .wp-block-navigation__responsive-container-open:not(.always-shown) {
+        display: flex;
+    }
+
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+        display: none;
+    }
+}
+
+// core/navigation block default style
 .wp-block-navigation {
     :where(.wp-block-navigation__responsive-container) {
         left: auto;
@@ -12,8 +24,8 @@
             width: min(360px, 100%);
         }
     }
-
-    :where(a) {
+    
+    :where(.wp-block-navigation-item__content) {
         text-decoration: underline;
         text-decoration-color: transparent;
     }

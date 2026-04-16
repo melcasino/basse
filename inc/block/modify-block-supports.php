@@ -1,12 +1,9 @@
 <?php
 /**
- * Block Supports.
+ * Block supports filter function
  * 
- * @package	  basse
- * @author    Mel Casiño
- * @copyright Copyright (c) 2025, Mel Casiño
- * @license   https://www.gnu.org/licenses/gpl-3.0.html GPL-3.0-or-late
- * @since     0.1.0
+ * @package basse
+ * @since   0.1.0
  */
 
 
@@ -15,18 +12,25 @@ namespace basse;
 
 
 
-/**
- * Exit if accessed directly
- * 
- */
+// Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit;
-
 }
 
 
 
+/**
+ * Modify block supports
+ * 
+ * This function filters the 'supports' argument of any registered block type.
+ * 
+ * @since 0.1.0
+ * 
+ * @see 'register_block_type_args'
+ * 
+ * @param array $args - Array of arguments for a block type.
+ * @param string $block_type - Block type name including namespace.
+ */
 function modify_block_supports( $args, $block_type ) {
 
     // Array of all block names(including namespace) to be modified.

@@ -1,56 +1,9 @@
 <?php
 /**
- * This function dynamically enqueue a custom block JS only if the specified block 
- * contains a specified CSS class name that is associated to the JS file.
+ * Block JS dynamic enqueueing function
  * 
- * @param string $block_name (required) 
- * The name of the block where the JS asset will be used. It must have the block namespace and the block slug. (e.g. core/button)
- * 
- * @param string $class_name (required) 
- * The CSS class name associated to the JS asset. It must be unique.
- * 
- * @param string $path (required) 
- * The full path of the JS file.
- * 
- * @param string $src (required) 
- * The full URL of the script, or path of the script relative to the WordPress root directory.
- * Default: ''
- * 
- * @param string[] $dependencies (optional)
- * An array of registered script handles this script depends on.
- * Default: array()
- * 
- * @param string|bool|null $version (optional)
- * The version of the JS file.
- * 
- * @param array $args (optional)
- * An array of additional style loading strategies.
- * |
- * |    $args['strategy'] string
- * |    Optional. If provided, may be either 'defer' or 'async'.
- * |
- * |    $args['in_footer'] string
- * |    Optional. Whether to print the script in the footer.
- * |    Default 'true'
- * |
- * |    $args['loading_method'] string
- * |    Optional. If provided, may be either 'inline' or 'external'.
- * |    Default: 'external'
- * |
- * |    $args['load_in'] string 
- * |    Optional. If provided, may be either 'frontend' or 'editor'. If not defined, asset will be loaded in both frontend and editor.
- * |    Default: 'frontend'
- * |
- * |    $args['critical'] boolean
- * |    Optional. Whether the asset being enqueued is a critical CSS or not. This is only relevant if $args['loading_method] is set to 'external'.
- * |    When left to default, CSS being enqueued will not be render-blocking. If set to 'true' CSS being enqueued must be set as render-blocking to avoid FOUC.
- * |    If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'external'. 
- * |    Default: 'false'
- * |
- * Default: array()
- * 
- * @return void
- * 
+ * @package basse
+ * @since 0.1.0
  */
 
 
@@ -59,18 +12,42 @@ namespace basse;
 
 
 
-/**
- * Exit if accessed directly
- * 
- */
+// Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-
-    exit;
-
+	exit;
 }
 
 
 
+/**
+ * Dynamically enqueue custom block script
+ * 
+ * This function dynamically enqueue a custom block JS only if the specified block 
+ * contains a specified CSS class name that is associated to the JS file.
+ * 
+ * @since 0.1.0
+ * 
+ * @see 'render_block_{$this->name}'
+ * @see 'basse\block_has_class()'
+ * 
+ * @param string           $block_name   The name of the block where the JS asset will be used. 
+ *                                       It must have the block namespace and the block slug. (e.g. core/button)
+ * @param string           $class_name   The CSS class name associated to the JS asset. It must be unique.
+ * @param string           $path         The full path of the JS file.
+ * @param string           $src          The full URL of the script, or path of the script relative to the WordPress root directory. Default ''.
+ * @param string[]         $dependencies An array of registered script handles this script depends on. Default 'array()'.
+ * @param string|bool|null $version      The version of the JS file.
+ * @param array            $args {
+ *     An array of additional style loading strategies.
+ * 
+ *     @type string $strategy       Optional. If provided, may be either 'defer' or 'async'.
+ *     @type string $in_footer      Optional. Whether to print the script in the footer. Default 'true'.
+ *     @type string $loading_method Optional. If provided, may be either 'inline' or 'external'. Default: 'external'.
+ *     @type string $load_in        Optional. If provided, may be either 'frontend' or 'editor'. 
+ *                                  If not defined, asset will be loaded in both frontend and editor.
+ *                                  Default: 'frontend'.
+ * }
+ */
 function dynamically_enqueue_custom_block_script( string $block_name, string $class_name, string $path, string $src = '', array $dependencies = array(), string|bool|null $version = false, array|bool $args = array() ) {
 
     // Bail early if required functions does not exist.

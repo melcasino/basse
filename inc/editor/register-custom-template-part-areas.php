@@ -1,12 +1,9 @@
 <?php
 /**
- * WordPress Block Editor related functions
+ * Custom template part areas register function
  * 
- * @package	  basse
- * @author    Mel Casiño
- * @copyright Copyright (c) 2025, Mel Casiño
- * @license   https://www.gnu.org/licenses/gpl-3.0.html GPL-3.0-or-late
- * @since     0.1.0
+ * @package basse
+ * @since   0.1.0
  */
 
 
@@ -15,14 +12,9 @@ namespace basse;
 
 
 
-/**
- * Exit if accessed directly
- * 
- */
+// Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit;
-
 }
 
 
@@ -30,6 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register custom template part areas
  * 
+ * @since 0.1.0
+ * 
+ * @see 'default_wp_template_part_areas'
+ * 
+ * @param array $areas - An array of area definitions.
  */
 function register_custom_template_part_areas( array $areas ) {
 

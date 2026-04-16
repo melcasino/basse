@@ -1,67 +1,9 @@
 <?php
 /**
- * This function dynamically enqueue a custom block CSS only if the specified block 
- * contains a specified CSS class name that is associated to the CSS file.
+ * Block CSS dynamic enqueueing function
  * 
- * @param string $block_name (required) 
- * The name of the block where the CSS asset will be used. It must have the block namespace and the block slug. (e.g. core/button)
- * 
- * @param string $class_name (required) 
- * The CSS class name associated to the CSS asset. It must be unique.
- * 
- * @param array $args
- * An array of arguments for the stylesheet.
- * |
- * |    $args['handle'] string
- * |    Required. The handle for the stylesheet
- * |
- * |    $args['src'] string|false
- * |    Required. The source URL of the stylesheet.
- * |
- * |    $args['path'] string|null
- * |    Required. Absolute path to the stylesheet, so that it can potentially be inlined.
- * |
- * |    $args['ver'] string|bool|null
- * |    Optional. The stylesheet version number.
- * |
- * |    $args['deps'] string[]
- * |    Optional. Array of registered stylesheet handles this stylesheet depends on.
- * |    Default: array()
- * |
- * |    $args['media'] string
- * |    Optional. The media for which this stylesheet has been defined.
- * |    Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
- * |
- * |    $args['loading_method'] string
- * |    Optional. If provided, may be either 'inline' or 'external'.
- * |    Default: 'inline'
- * |
- * |    $args['load_in'] string 
- * |    Optional. If provided, may be either 'frontend' or 'editor'. If not defined, asset will be loaded in both frontend and editor.
- * |
- * |    $args['critical'] boolean
- * |    Optional. Whether the asset being enqueued is a critical CSS or not. This is only relevant if $args['loading_method] is set to 'external'.
- * |    When left to default, CSS being enqueued will not be render-blocking. If set to 'true' CSS being enqueued must be set as render-blocking to avoid FOUC.
- * |    If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'external'. 
- * |    Default: 'false'
- * |
- * 
- * @return void
- * 
- * 
- * Uses the following Utility function:
- * block_has_class()
- * 
- * Uses the following WordPress filter hook:
- * render_block_{$this->name}
- * 
- * 
- * @package	  basse
- * @author    Mel Casiño
- * @copyright Copyright (c) 2025, Mel Casiño
- * @license   https://www.gnu.org/licenses/gpl-3.0.html GPL-3.0-or-late
- * @since     0.1.0
- * 
+ * @package basse
+ * @since 0.1.0
  */
 
 
@@ -70,18 +12,47 @@ namespace basse;
 
 
 
-/**
- * Exit if accessed directly
- * 
- */
+// Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit;
-
 }
 
 
 
+/**
+ * Dynamically enqueue custom block style
+ * 
+ * This function dynamically enqueue a custom block CSS only if the specified block 
+ * contains a specified CSS class name that is associated to the CSS file.
+ * 
+ * @since 0.1.0
+ * 
+ * @see 'render_block_{$this->name}'
+ * @see 'basse\block_has_class()'
+ * 
+ * @param string $block_name The name of the block where the CSS asset will be used. 
+ *                           It must have the block namespace and the block slug. (e.g. core/button)
+ * @param string $class_name The CSS class name associated to the CSS asset. It must be unique.
+ * @param array  $args {
+ *     An array of arguments for the stylesheet.
+ * 
+ *     @type string           $handle         The handle for the stylesheet.
+ *     @type string|false     $src            The source URL of the stylesheet.
+ *     @type string|null      $path           Optional. Absolute path to the stylesheet, so that it can potentially be inlined.
+ *     @type string|bool|null $ver            Optional. The stylesheet version number.
+ *     @type string[]         $deps           Optional. Array of registered stylesheet handles this stylesheet depends on. Default 'array()'.
+ *     @type string           $media          Optional. The media for which this stylesheet has been defined. Default 'all'.
+ *                                            Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
+ *     @type string           $loading_method Optional. Whether the CSS will be loaded inline or externally. Default 'inline'. Accepts 'inline' or 'external'.
+ *     @type string           $load_in        Optional. Whether the CSS will be loaded in frontend or editor. If not defined, asset will be loaded in both frontend and editor. Default 'null'.
+ *     @type bool             $critical       Optional. Whether the CSS being enqueued is a critical CSS or not. 
+ *                                            This is only relevant if $args['loading_method] is set to 'external'.
+ *                                            When left to default, CSS being enqueued will not be render-blocking. 
+ *                                            If set to 'true' CSS being enqueued must be set as render-blocking to avoid FOUC.
+ *                                            If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'external'.
+ *                                            Default 'false'.     
+ * }
+ */
 function dynamically_enqueue_custom_block_style( string $block_name, string $class_name, array $args ) {
     
     // Bail early if required functions does not exist.
@@ -159,11 +130,11 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
 
                         // Temporary fix for a "core/query" block issue.
                         // "core/query" CSS generated from theme.json not rendered when "enhancedPagination" attribute is false. 
-                        // @refer https://github.com/WordPress/gutenberg/issues/68580
+                        // As a temporary fix, "core/query" block style must be enqueued manually when "enhancedPagination" attribute is set to false.
                         //
-                        // Because of the issue mentioned above, any custom styles for "core/query" block that is set 
-                        // to be enqueued in an inline manner will fail to load.
-                        // Check on the issue in the future and remove this solution when it is already fixed.
+                        // @link https://github.com/WordPress/gutenberg/issues/68580
+                        //
+                        // @todo Check on the issue in the future and remove this code when it is already fixed.
                         // 
                         if ( $block_name === 'core/query' && ( !isset( $block['attrs']['enhancedPagination'] ) || isset( $block['attrs']['enhancedPagination'] ) === false ) ) {
                             wp_enqueue_style( 'wp-block-query' );

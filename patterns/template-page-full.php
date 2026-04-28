@@ -18,6 +18,6 @@
 
 <!-- wp:template-part {"slug":"header","theme":"basse","area":"header"} /-->
 
-<!-- wp:post-content {"tagName":"main","align":"wide","style":{"spacing":{"margin":{"top":"0"}}},"layout":{"type":"constrained"}} /-->
+<!-- wp:post-content {"tagName":"main","style":{"spacing":{"margin":{"top":"0"}}},"layout":{"type":"constrained"}} /-->
 
 <!-- wp:template-part {"slug":"footer","theme":"basse","area":"footer","style":{"spacing":{"margin":{"top":"0"}}}} /-->

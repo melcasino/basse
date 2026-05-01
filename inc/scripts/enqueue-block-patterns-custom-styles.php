@@ -75,7 +75,7 @@ function enqueue_block_patterns_custom_styles() {
 
         // If it is set, get the version number of the current file being 
         // loop through from the CSS file metadata.
-        $version = $css_file_metadata['version'] ?? null;
+        $version = $css_file_metadata['version'] ?? false;
 
         // Create asset handle
         $handle = THEME_NS . '-pattern---' . strtolower( str_replace( ' ', '-', $css_file_headers['name'] ) );

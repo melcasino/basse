@@ -22,25 +22,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Enqueue block patterns custom styles
  * 
- * This function enqueues custom block patterns styles only when patterns are being used in the page.
+ * This function will process all custom block patterns styles for enqueueing.
  * The following are required for this function to work:
- * 1. All block patterns CSS files must be stored in "/assets/css/block/block-patterns" directory.
- * 2. All block patterns CSS files must have the required file headers:
+ * 
+ *    1. All block patterns CSS files must be stored in "/assets/css/block/block-patterns" directory.
+ *    2. All block patterns CSS files must have the required file headers:
  *           
- *    - Name:               Required. The Pattern Name.
- *    - Block Name:         Required. The block name. Must contain namespace and block slug (e.g. core/group).
- *    - Class Name:         Required. The CSS Class Name used in the pattern. Must be unique.
- *    - Dependencies:       Optional. A comma separted registered stylesheet handles the stylesheet depends on.
- *    - Media:              Optional. The media for which this stylesheet has been defined. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
- *    - Load In:            Optional. Where the asset will be loaded. Optional. Default 'null'. Accepts 'frontend' or 'editor'.
- *    - Loading Method:     Optional. The preferred loading Method. Optional. Default 'inline'. Accepts 'inline' or 'external'. 
- *    - Critical:           Optional. Whether the CSS asset is a critial CSS or not. Only relevant when 'Loading Method' is 'external'. 
- *                          Default 'false'. Accepts 'true' or 'false'.  
+ *       - Name:               Required. The Pattern Name.
+ *       - Block Name:         Required. The block name. Must contain namespace and block slug (e.g. core/group).
+ *       - Class Name:         Required. The CSS Class Name used in the pattern. Must be unique.
+ *       - Dependencies:       Optional. A comma separted registered stylesheet handles the stylesheet depends on.
+ *       - Media:              Optional. The media for which this stylesheet has been defined. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'.
+ *       - Load In:            Optional. Where the asset will be loaded. Optional. Default 'null'. Accepts 'frontend' or 'editor'.
+ *       - Loading Method:     Optional. The preferred loading Method. Optional. Default 'inline'. Accepts 'inline' or 'external'. 
+ *       - Critical:           Optional. Whether the CSS asset is a critial CSS or not. Only relevant when 'Loading Method' is 'external'. 
+ *                             Default 'false'. Accepts 'true' or 'false'.  
  * 
  * @since 0.1.0
  * 
- * @see 'get_file_data()'
- * @see 'basse\dynamically_enqueue_custom_block_style()' 
+ * @see get_file_data()
+ * @see basse\dynamically_enqueue_custom_block_style()
  */
 function enqueue_block_patterns_custom_styles() {
 
@@ -49,10 +50,7 @@ function enqueue_block_patterns_custom_styles() {
     $patterns_css_file_metadata = glob( THEME_DIR . '/assets/css/block/block-patterns/*.php' );
 
     // Filter the array of all patterns CSS file paths to get only the default CSS file paths. 
-    $patterns_default_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return !str_contains( basename( $file_path ), '-rtl.css'); } ) );
-
-    // Filter the array of all patterns CSS file paths to get only the RTL CSS file paths.
-    $patterns_rtl_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return str_contains( basename( $file_path ), '-rtl.css'); } ) );
+    $patterns_default_css_file_paths = array_values( array_filter( $patterns_css_file_paths, function( $file_path ) {  return ! str_contains( basename( $file_path ), '-rtl.css'); } ) );
 
     // Loop through all the default CSS file paths
     foreach( $patterns_default_css_file_paths as $i => $file_path ) {
@@ -88,22 +86,22 @@ function enqueue_block_patterns_custom_styles() {
         }
 
         // Create asset source from $file_path
-        $src = file_exists( $file_path ) ? str_replace( THEME_DIR, THEME_URI, $file_path ) : null;
+        $src = str_replace( THEME_DIR, THEME_URI, $file_path );
 
         // Create array of dependencies from $css_file_headers['dependencies']
-        $deps = !empty( $css_file_headers['dependencies'] ) ? explode( ',', $css_file_headers['dependencies'] ) : null;
+        $deps = ! empty( $css_file_headers['dependencies'] ) ? explode( ',', $css_file_headers['dependencies'] ) : null;
 
-        // Create the $args array that will be passed as an argument to the enqueue function
+        // Create the $args array that will be passed as an argument to the custom enqueue function
         $args = array();
         $args = array_merge( $args, array( 'handle' => $handle ) );
         $args = array_merge( $args, array( 'path' => $file_path ) );
-        $args = !is_null( $src ) ? array_merge( $args, array( 'src' => $src ) ) : $args;
-        $args = !is_null( $deps ) ? array_merge( $args, array( 'deps' => $deps ) ) : $args;
-        $args = !is_null( $version ) ? array_merge( $args, array( 'ver' => $version ) ) : $args;
-        $args = !empty( $css_file_headers['media'] ) ? array_merge( $args, array( 'media' => $css_file_headers['media'] ) ) : $args;
-        $args = !empty( $css_file_headers['load_in'] ) ? array_merge( $args, array( 'load_in' => $css_file_headers['load_in'] ) ) : $args;
-        $args = !empty( $css_file_headers['loading_method'] ) ? array_merge( $args, array( 'loading_method' => $css_file_headers['loading_method'] ) ) : $args;
-        $args = !empty( $css_file_headers['critical'] ) ? array_merge( $args, array( 'critical' => filter_var( $css_file_headers['critical'], FILTER_VALIDATE_BOOLEAN ) ) ) : $args;
+        $args = array_merge( $args, array( 'src' => $src ) );
+        $args = ! is_null( $deps ) ? array_merge( $args, array( 'deps' => $deps ) ) : $args;
+        $args = ! is_null( $version ) ? array_merge( $args, array( 'ver' => $version ) ) : $args;
+        $args = ! empty( $css_file_headers['media'] ) ? array_merge( $args, array( 'media' => $css_file_headers['media'] ) ) : $args;
+        $args = ! empty( $css_file_headers['load_in'] ) ? array_merge( $args, array( 'load_in' => $css_file_headers['load_in'] ) ) : $args;
+        $args = ! empty( $css_file_headers['loading_method'] ) ? array_merge( $args, array( 'loading_method' => $css_file_headers['loading_method'] ) ) : $args;
+        $args = ! empty( $css_file_headers['critical'] ) ? array_merge( $args, array( 'critical' => filter_var( $css_file_headers['critical'], FILTER_VALIDATE_BOOLEAN ) ) ) : $args;
 
         // Enqueue the CSS asset using a custom function
         dynamically_enqueue_custom_block_style( 

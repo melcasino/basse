@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *                                            This is only relevant if $args['loading_method] is set to 'external'.
  *                                            If undefined or set to 'false', CSS being enqueued will not be render-blocking. 
  *                                            If set to 'true' CSS being enqueued will be set as render-blocking to avoid FOUC.
- *                                            If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'external'.
+ *                                            If style is critical and just small, consider inlining the style by setting $args['loading_method'] to 'inline'.
  *                                            Default 'false'.     
  * }
  */
@@ -83,17 +83,21 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
             );
 
     // Validate passed arguments
-    if ( ! str_contains( $block_name, '/' ) || str_contains( $block_name, ' ' ) ) return;
-    if ( str_contains( $class_name, ' ' ) || str_starts_with( $class_name, '.') ) return;
+    if ( ! str_contains( $block_name, '/' ) || str_contains( trim( $block_name ), ' ' ) ) return;
+    if ( str_contains( trim( $class_name ), ' ' ) || str_starts_with( $class_name, '.') ) return;
     if ( ! empty( $args ) ) {
         if ( array_key_exists( 'handle', $args ) ) {
-            if ( empty( $args['handle'] ) || ! is_string( $args['handle'] ) ) {
+            if ( empty( trim( $args['handle'] ) ) || ! is_string( $args['handle'] ) ) {
                 return;       
             }
         }
 
         if ( array_key_exists( 'src', $args ) ) {
-            if ( empty( $args['src'] ) || ! is_string( $args['src'] ) || ( ! str_contains( $args['src'], 'http://' ) && ! str_contains( $args['src'], 'https://' ) ) ) {
+            if ( ! is_string( $args['src'] ) ) {
+                return;
+            } 
+
+            if ( ! str_starts_with( $args['src'], 'http://' ) && ! str_starts_with( $args['src'], 'https://' ) ) {
                 return;
             }
         }
@@ -117,23 +121,19 @@ function dynamically_enqueue_custom_block_style( string $block_name, string $cla
         }
 
         if ( array_key_exists( 'loading_method', $args ) ) {
-            if ( strtolower( $args['loading_method'] ) !== 'inline' || strtolower( $args['loading_method'] ) !== 'external' ) {
-                if ( ! isset( $args['loading_method'] ) || empty( $args[ 'loading_method' ] ) ) {
-                    return;
-                }
+            if ( strtolower( $args['loading_method'] ) !== 'inline' && strtolower( $args['loading_method'] ) !== 'external' ) {
+                return;
             }
         }
 
         if ( array_key_exists( 'load_in', $args ) ) {
-            if ( strtolower( $args['load_in'] ) !== 'frontend' || strtolower( $args['load_in'] ) !== 'editor' ) {
-                if ( ! isset( $args['load_in'] ) || empty( $args['load_in'] ) ) {
-                    return;
-                }
+            if ( strtolower( $args['load_in'] ) !== 'frontend' && strtolower( $args['load_in'] ) !== 'editor' ) {
+                return;
             }
         }
 
         if ( array_key_exists( 'critical', $args ) ) {
-            if( ! is_bool( $args['critical'] ) ) return;
+            if ( ! is_bool( $args['critical'] ) ) return;
         }
     }
 

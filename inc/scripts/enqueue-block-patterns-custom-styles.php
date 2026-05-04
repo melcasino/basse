@@ -71,18 +71,14 @@ function enqueue_block_patterns_custom_styles() {
         $css_file_headers = get_file_data( $file_path, $default_file_headers );
 
         // Get the CSS file metadata of the current file being loop through.
-        $css_file_metadata = isset( $patterns_css_file_metadata[$i] ) ? include  $patterns_css_file_metadata[$i] : null;
-
-        // If it is set, get the version number of the current file being 
-        // loop through from the CSS file metadata.
-        $version = $css_file_metadata['version'] ?? false;
+        $css_file_metadata = isset( $patterns_css_file_metadata[$i] ) ? include $patterns_css_file_metadata[$i] : null;
 
         // Create asset handle
         $handle = THEME_NS . '-pattern---' . strtolower( str_replace( ' ', '-', $css_file_headers['name'] ) );
         if ( strtolower( $css_file_headers['load_in'] ) === 'frontend' ) {
-            $handle = $handle . '---frontend';
+            $handle .= '---frontend';
         } elseif( strtolower( $css_file_headers['load_in'] ) === 'editor' ) {
-            $handle = $handle . '---editor';
+            $handle .= '---editor';
         }
 
         // Create asset source from $file_path
@@ -91,11 +87,16 @@ function enqueue_block_patterns_custom_styles() {
         // Create array of dependencies from $css_file_headers['dependencies']
         $deps = ! empty( $css_file_headers['dependencies'] ) ? explode( ',', $css_file_headers['dependencies'] ) : null;
 
+        // If it is set, get the version number of the current file being 
+        // loop through from the CSS file metadata.
+        $version = $css_file_metadata['version'] ?? false;
+
         // Create the $args array that will be passed as an argument to the custom enqueue function
-        $args = array();
-        $args = array_merge( $args, array( 'handle' => $handle ) );
-        $args = array_merge( $args, array( 'path' => $file_path ) );
-        $args = array_merge( $args, array( 'src' => $src ) );
+        $args = array(
+            'handle'    =>  $handle,
+            'src'       =>  $src,
+            'path'      =>  $file_path,
+        );
         $args = ! is_null( $deps ) ? array_merge( $args, array( 'deps' => $deps ) ) : $args;
         $args = ! is_null( $version ) ? array_merge( $args, array( 'ver' => $version ) ) : $args;
         $args = ! empty( $css_file_headers['media'] ) ? array_merge( $args, array( 'media' => $css_file_headers['media'] ) ) : $args;

@@ -74,49 +74,69 @@ function dynamically_enqueue_custom_block_script( string $block_name, string $cl
             );
 
     // Validate passed arguments and silently fail if not valid.
-    if ( ! str_contains( $block_name, '/' ) || str_contains( $block_name, ' ' ) ) return;
-    if ( str_contains( $class_name, ' ' )  || str_starts_with( $class_name, '.') ) return;
+    if ( ! str_contains( $block_name, '/' ) || str_contains( trim( $block_name ), ' ' ) ) return;
+    if ( str_contains( trim( $class_name ), ' ' ) || str_starts_with( $class_name, '.') ) return;
     if ( ! empty( $args ) ) {
         if ( array_key_exists( 'handle', $args ) ) {
-            if ( empty( $args['handle'] ) || ! is_string( $args['handle'] ) ) return;
+            if ( empty( trim( $args['handle'] ) ) || ! is_string( $args['handle'] ) ) {
+                return;       
+            }
         }
 
         if ( array_key_exists( 'src', $args ) ) {
-            if ( ! str_contains( $args['src'], 'http://' ) && ! str_contains( $args['src'], 'https://' ) ) return;
+            if ( ! is_string( $args['src'] ) ) {
+                return;
+            } 
+
+            if ( ! str_starts_with( $args['src'], 'http://' ) && ! str_starts_with( $args['src'], 'https://' ) ) {
+                return;
+            }
         }
 
         if ( array_key_exists( 'path', $args ) ) {
-            if ( ! is_string( $args['path'] ) && ! file_exists( $args['path'] ) ) return; 
+            if ( ! is_string( $args['path'] ) && ! file_exists( $args['path'] ) ) {
+                return;
+            }
+        }
+
+        if ( array_key_exists( 'deps', $args ) ) {
+            if ( ! is_array( $args['deps'] ) ) {
+                return;
+            }
         }
 
         if ( array_key_exists( 'ver', $args ) ) {
-            if ( ! is_string( $args['ver'] ) && $args['ver'] !== false && ! is_null( $args['ver'] ) ) return;
+            if ( ! is_string( $args['ver'] ) && $args['ver'] !== false && ! is_null( $args['ver'] ) ) {
+                return;
+            }
         }
 
         if ( array_key_exists( 'strategy', $args ) ) { 
-            if ( $args['strategy'] !== 'defer' && $args['strategy'] !== 'async' ) return;
+            if ( $args['strategy'] !== 'defer' && $args['strategy'] !== 'async' ) {
+                return;
+            }
         }
 
         if ( array_key_exists( 'in_footer', $args ) ) {
-            if ( ! is_bool( $args['in_footer'] ) ) return; 
+            if ( ! is_bool( $args['in_footer'] ) ) { 
+                return; 
+            } 
         }
 
         if ( array_key_exists( 'fetchpriority', $args ) ) {
-            if ( $args['fetchpriority'] !== 'low' && $args['fetchpriority'] !== 'high' &&  $args['fetchpriority'] !== 'auto' ) return;
+            if ( $args['fetchpriority'] !== 'low' && $args['fetchpriority'] !== 'high' &&  $args['fetchpriority'] !== 'auto' ) { 
+                return; 
+            }
         }
 
         if ( array_key_exists( 'loading_method', $args ) ) { 
             if ( strtolower( $args['loading_method'] ) !== 'inline' && strtolower( $args['loading_method'] ) !== 'external' ) {
-                if ( ! isset( $args['loading_method'] ) && empty( $args[ 'loading_method' ] ) ) {
-                    return;
-                }
+                return;
             }
         }
         if( array_key_exists( 'load_in', $args ) ) {
             if ( strtolower( $args['load_in'] ) !== 'frontend' && strtolower( $args['load_in'] ) !== 'editor' ) {
-                if ( ! isset( $args['load_in'] ) && empty( $args['load_in'] ) ) {
-                    return;
-                }
+                return;
             }
         }
     }

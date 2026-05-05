@@ -88,7 +88,7 @@ function enqueue_block_style_variations_css() {
         $args = ! empty( $css_file_headers['critical'] ) ? array_merge( $args, array( 'critical' => filter_var( $css_file_headers['critical'], FILTER_VALIDATE_BOOLEAN ) ) ) : $args;
 
         // Enqueue the CSS asset using a custom function
-        dynamically_enqueue_custom_block_style( 
+        enqueue_block_style_if_block_has_class( 
             $css_file_headers['block_name'],
             $css_file_headers['class_name'], 
             $args

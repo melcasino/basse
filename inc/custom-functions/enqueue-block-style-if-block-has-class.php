@@ -1,6 +1,6 @@
 <?php
 /**
- * Block CSS dynamic enqueueing function
+ * Block CSS conditional enqueueing function
  * 
  * @package basse
  * @since 0.1.0
@@ -20,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Dynamically enqueue custom block style
+ * Enqueue block style if block has class
  * 
- * This function dynamically enqueue a custom block CSS only if the specified block 
+ * This function conditionally enqueue a custom block CSS only if the specified block 
  * contains the custom CSS class name that is associated to the style.
  * 
  * @since 0.1.0
@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *                                            Default 'false'.     
  * }
  */
-function dynamically_enqueue_custom_block_style( string $block_name, string $class_name, array $args ) {
+function enqueue_block_style_if_block_has_class( string $block_name, string $class_name, array $args ) {
 
     // Bail early if required functions does not exist.
     if ( ! function_exists( 'basse\block_has_class' ) ) return;

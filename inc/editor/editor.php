@@ -21,3 +21,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Load required files
 require_once __DIR__ . '/register-custom-template-part-areas.php';
+require_once __DIR__ . '/disable-openverse.php';
+require_once __DIR__ . '/remove-third-party-block-plugins.php';

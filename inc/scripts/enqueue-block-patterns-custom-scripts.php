@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.1.0
  * 
  * @see get_file_data()
- * @see basse\dynamically_enqueue_custom_block_script()
+ * @see basse\enqueue_block_script_if_block_has_class()
  */
 function enqueue_block_patterns_custom_scripts() {
 
@@ -110,7 +110,7 @@ function enqueue_block_patterns_custom_scripts() {
 
         // Enqueue the JS asset using a custom function if all required file headers are set.
         if ( ! empty( $js_file_headers['name'] ) && ! empty( $js_file_headers['block_name'] ) && ! empty( $js_file_headers['class_name'] ) ) {
-            dynamically_enqueue_custom_block_script(
+            enqueue_block_script_if_block_has_class(
                 $js_file_headers['block_name'],
                 $js_file_headers['class_name'],
                 $args

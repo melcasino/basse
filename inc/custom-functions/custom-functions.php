@@ -21,4 +21,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Load required files
 require_once __DIR__ . '/enqueue-block-style-if-block-has-class.php';
-require_once __DIR__ . '/dynamically-enqueue-custom-block-script.php';
+require_once __DIR__ . '/enqueue-block-script-if-block-has-class.php';

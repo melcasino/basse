@@ -1,6 +1,6 @@
 <?php
 /**
- * Block JS dynamic enqueueing function
+ * Block JS conditional enqueueing function
  * 
  * @package basse
  * @since 0.1.0
@@ -20,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Dynamically enqueue custom block script
+ * Enqueue block script if block has class
  * 
- * This function dynamically enqueue a custom block JS only if the specified block 
+ * This function conditionally enqueue a custom block JS only if the specified block 
  * has the custom CSS class name that is associated to the JS file.
  * 
  * @since 0.1.0
@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *                                            If not defined, asset will be loaded in both frontend and editor.
  * }
  */
-function dynamically_enqueue_custom_block_script( string $block_name, string $class_name, array $args ) {
+function enqueue_block_script_if_block_has_class( string $block_name, string $class_name, array $args ) {
 
     // Bail early if required functions does not exist.
     if ( ! function_exists( 'basse\block_has_class' ) ) return;

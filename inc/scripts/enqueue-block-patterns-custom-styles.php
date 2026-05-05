@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.1.0
  * 
  * @see get_file_data()
- * @see basse\dynamically_enqueue_custom_block_style()
+ * @see basse\enqueue_block_style_if_block_has_class()
  */
 function enqueue_block_patterns_custom_styles() {
 

@@ -67,21 +67,22 @@ function enqueue_block_style_variations_css() {
         // Get the CSS file metadata of the current file being loop through.
         $css_file_metadata = isset( $style_variations_css_file_metadata[$i] ) ? include  $style_variations_css_file_metadata[$i] : null;
 
-        // If it is set, get the version number of the current file being 
-        // loop through from the CSS file metadata.
-        $version = $css_file_metadata['version'] ?? false;
-
         // Create asset handle
         $handle = THEME_NS . '-block-style-variation---' . str_replace( '/', '-', $css_file_headers['block_name'] ) . '---' . $css_file_headers['name'];
 
         // Create asset source from $file_path
         $src = str_replace( THEME_DIR, THEME_URI, $file_path );
 
+        // If it is set, get the version number of the current file being 
+        // loop through from the CSS file metadata.
+        $version = $css_file_metadata['version'] ?? false;
+
         // Create the $args array that will be passed as an argument to the enqueue function
-        $args = array();
-        $args = array_merge( $args, array( 'handle' => $handle ) );
-        $args = array_merge( $args, array( 'path' => $file_path ) );
-        $args = ! is_null( $src ) ? array_merge( $args, array( 'src' => $src ) ) : $args;
+        $args = array(
+            'handle'    =>  $handle,
+            'src'       =>  $src,
+            'path'      =>  $file_path
+        );
         $args = ! is_null( $version ) ? array_merge( $args, array( 'ver' => $version ) ) : $args;
         $args = ! empty( $css_file_headers['loading_method'] ) ? array_merge( $args, array( 'loading_method' => $css_file_headers['loading_method'] ) ) : $args;
         $args = ! empty( $css_file_headers['critical'] ) ? array_merge( $args, array( 'critical' => filter_var( $css_file_headers['critical'], FILTER_VALIDATE_BOOLEAN ) ) ) : $args;

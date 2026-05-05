@@ -276,7 +276,8 @@
 				"typography": {
 					"fontWeight": "var:custom|typography|font-weight|bold",
 					"lineHeight": "var:custom|typography|line-height|xx-small"
-				}
+				},
+				"css": "& > a { text-decoration: underline; text-decoration-color: transparent; } & > a:is(:hover, :focus, :focus-visible) { text-decoration-color: inherit; }"
 			},
 			"h1": {
 				"typography": {

@@ -358,7 +358,7 @@
 				"spacing": {
 					"blockGap": "var:preset|spacing|small"
 				},
-				"css": "--_padding-block: 0.75em; --_padding-inline: 1.125em;"
+				"css": "--_padding-block: 0.875em; --_padding-inline: 1.125em;"
 			},
 			"core/accordion-item": {
 				"spacing": {

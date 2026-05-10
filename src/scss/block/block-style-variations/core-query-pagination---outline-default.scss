@@ -17,7 +17,7 @@
         border: solid var(--_border-width);
         border-radius: var(--wp--custom--border--radius--medium);
         transition-property: text-decoration-color;
-        transition-duration: var(--wp--custom--defaults--transition-duration);
+        transition-duration: var(--wp--custom--default--transition-duration);
         transition-timing-function: ease-in-out;
 
         &:where(.current, :hover, :focus, :focus-visible) {

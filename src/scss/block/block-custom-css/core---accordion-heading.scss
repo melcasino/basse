@@ -14,7 +14,7 @@
     & &__toggle {
         @media(prefers-reduced-motion: no-preference) {
             span.wp-block-accordion-heading__toggle-icon {
-                transition-duration: var(--wp--custom--defaults--transition-duration, 0.25s);
+                transition-duration: var(--wp--custom--default--transition-duration, 0.25s);
             }
         }
     }

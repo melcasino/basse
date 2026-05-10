@@ -12,7 +12,7 @@
 
         @media(prefers-reduced-motion: no-preference) {
             transition-property: display, padding-block, opacity, height;
-            transition-duration: var(--wp--custom--defaults--transition-duration, 0.25s);
+            transition-duration: var(--wp--custom--default--transition-duration, 0.25s);
             transition-timing-function: ease-in-out;
             transition-behavior: allow-discrete;
         }

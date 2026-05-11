@@ -375,7 +375,7 @@
 					"fontSize": "inherit",
 					"fontWeight": "var:custom|typography|font-weight|semi-bold"
 				},
-				"css": "&__toggle { padding: var(--_padding-block) var(--_padding-inline); gap: 0.5rem; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
+				"css": "&__toggle { padding: var(--_padding-block) var(--_padding-inline); gap: 0.5rem; } &__toggle-title { text-decoration: underline; text-decoration-color: transparent; transition: all var(--wp--custom--default--transition-duration) ease-out; } &__toggle-icon { font-size: 110%; height: 0.8em; width: 0.8em; }"
 			},
 			"core/accordion-panel": {
 				"spacing": {

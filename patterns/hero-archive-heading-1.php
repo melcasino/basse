@@ -12,7 +12,7 @@
  * Inserter: true
  *
  * @package Basse
- * @since Basse 0.1.0
+ * @since 0.1.0
  */ 
 ?>
 

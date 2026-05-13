@@ -35,8 +35,8 @@ function register_custom_template_part_areas( array $areas ) {
         array(
             'area'          =>  'sidebar',
             'area_tag'      =>  'section',
-            'label'         =>  __( 'Sidebar', 'basse' ),
-            'description'   =>  __( 'The Sidebar template defines a page area that can be found on the Page (With Sidebar) template.', 'basse' ),
+            'label'         =>  __( 'Sidebar', THEME_NS ),
+            'description'   =>  __( 'The Sidebar template defines a page area that can be found on the Page (With Sidebar) template.', THEME_NS ),
             'icon'          =>  'sidebar',
         ),
     );

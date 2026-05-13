@@ -31,33 +31,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 function register_block_style_variations() {
     $block_styles = array(
         'core/button'           =>  array(
-            'fill-small'            =>  __( 'Fill - Small', 'basse' ),
-            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
-            'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),    
-            'outline-default'       =>  __( 'Outline', 'basse' ),
-            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
+            'fill-small'            =>  __( 'Fill - Small', THEME_NS ),
+            'fill-light-default'    =>  __( 'Fill Light', THEME_NS ),
+            'fill-light-small'      =>  __( 'Fill Light - Small', THEME_NS ),    
+            'outline-default'       =>  __( 'Outline', THEME_NS ),
+            'outline-small'         =>  __( 'Outline - Small', THEME_NS ),
         ),
         'core/read-more'        =>  array(
-            'fill-small'            =>  __( 'Fill - Small', 'basse' ),
-            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
-            'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
-            'outline-default'       =>  __( 'Outline', 'basse' ),    
-            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
+            'fill-small'            =>  __( 'Fill - Small', THEME_NS ),
+            'fill-light-default'    =>  __( 'Fill Light', THEME_NS ),
+            'fill-light-small'      =>  __( 'Fill Light - Small', THEME_NS ),
+            'outline-default'       =>  __( 'Outline', THEME_NS ),    
+            'outline-small'         =>  __( 'Outline - Small', THEME_NS ),
         ),
         'core/accordion'        =>  array(
-            'core-accordion-style-1'    =>  __( 'Style 1', 'basse' ),
+            'core-accordion-style-1'    =>  __( 'Style 1', THEME_NS ),
         ),
         'core/query-pagination' =>  array(
-            'fill-light-default'    =>  __( 'Fill Light', 'basse' ),
-            'fill-light-small'      =>  __( 'Fill Light - Small', 'basse' ),
-            'outline-default'       =>  __( 'Outline', 'basse' ),
-            'outline-small'         =>  __( 'Outline - Small', 'basse' ),
+            'fill-light-default'    =>  __( 'Fill Light', THEME_NS ),
+            'fill-light-small'      =>  __( 'Fill Light - Small', THEME_NS ),
+            'outline-default'       =>  __( 'Outline', THEME_NS ),
+            'outline-small'         =>  __( 'Outline - Small', THEME_NS ),
         ),
         'core/post-navigation-link' =>  array(
-            'label-on-top' =>  __( 'Label On Top', 'basse' ),
+            'label-on-top' =>  __( 'Label On Top', THEME_NS ),
         ),
         'core/navigation'       =>  array(
-            'core-navigation-style-1' =>  __( 'Style 1', 'basse' ),
+            'core-navigation-style-1' =>  __( 'Style 1', THEME_NS ),
         ) 
     );
 

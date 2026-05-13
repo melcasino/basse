@@ -19,7 +19,7 @@
 <!-- wp:comments {"className":"basse-pattern-comments"} -->
 <div class="wp-block-comments basse-pattern-comments">
     <!-- wp:heading -->
-    <h2 class="wp-block-heading"><?php esc_html_e( 'Comments', 'basse' ) ?></h2>
+    <h2 class="wp-block-heading"><?php esc_html_e( 'Comments', THEME_NS ) ?></h2>
     <!-- /wp:heading -->
 
     <!-- wp:comments-title {"level":3} /-->

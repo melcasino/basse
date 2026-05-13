@@ -19,7 +19,7 @@
 <!-- wp:group {"className":"basse-pattern-social-share-links-1","style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"default"}} -->
 <div class="wp-block-group basse-pattern-social-share-links-1">
     <!-- wp:paragraph -->
-    <p><strong><?php esc_html_e( 'Share the post:', 'basse' ) ?></strong></p>
+    <p><strong><?php esc_html_e( 'Share the post:', THEME_NS ) ?></strong></p>
     <!-- /wp:paragraph -->
 
     <?php
@@ -44,7 +44,7 @@
         ?>
 
         <!-- wp:paragraph -->
-        <p><em><a href="<?php esc_url( 'https://wordpress.org/plugins/social-sharing-block/' ) ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Social Sharing Block', 'basse' ) ?></a><?php esc_html_e( ' goes here...', 'basse' ) ?></em></p>
+        <p><em><a href="<?php esc_url( 'https://wordpress.org/plugins/social-sharing-block/' ) ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Social Sharing Block', THEME_NS ) ?></a><?php esc_html_e( ' goes here...', THEME_NS ) ?></em></p>
         <!-- /wp:paragraph -->
         
         <?php

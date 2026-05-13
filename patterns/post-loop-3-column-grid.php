@@ -31,8 +31,8 @@
     <!-- /wp:query-pagination -->
 
     <!-- wp:query-no-results -->
-        <!-- wp:paragraph {"align":"center","placeholder":"<?php esc_html_e( 'Add text or blocks that will display when a query returns no results.', 'basse' ) ?>"} -->
-        <p class="has-text-align-center"><?php esc_html_e( 'No results found', 'basse' ) ?></p>
+        <!-- wp:paragraph {"align":"center","placeholder":"<?php esc_html_e( 'Add text or blocks that will display when a query returns no results.', THEME_NS ) ?>"} -->
+        <p class="has-text-align-center"><?php esc_html_e( 'No results found', THEME_NS ) ?></p>
         <!-- /wp:paragraph -->
     <!-- /wp:query-no-results -->
 </div>

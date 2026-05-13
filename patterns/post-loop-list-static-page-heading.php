@@ -19,7 +19,7 @@
 <!-- wp:query {"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"taxQuery":null,"parents":[],"format":[]},"tagName":"main","className":"basse-pattern-post-loop-list-default","layout":{"type":"constrained"},"style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large"},"blockGap":"var:preset|spacing|large"}}} -->
 <main class="wp-block-query basse-pattern-post-loop-list-default" style="margin-top:0; padding-top:var(--wp--preset--spacing--x-large); padding-bottom:var(--wp--preset--spacing--x-large)">
     <!-- wp:heading {"level":1} -->
-    <h1 class="wp-block-heading"><?php echo esc_html_x( 'Posts', 'This is a title of a page that displays a list of posts.', 'basse' ) ?></h1>
+    <h1 class="wp-block-heading"><?php echo esc_html_x( 'Posts', 'This is a title of a page that displays a list of posts.', THEME_NS ) ?></h1>
     <!-- /wp:heading -->
      
     <!-- wp:post-template -->
@@ -60,7 +60,7 @@
 
     <!-- wp:query-no-results -->
         <!-- wp:paragraph {"align":"center","placeholder":"Add text or blocks that will display when a query returns no results."} -->
-        <p class="has-text-align-center"><?php echo esc_html_x( 'No results found.', 'A message saying that there are no results found on the default page query.', 'basse' ) ?></p>
+        <p class="has-text-align-center"><?php echo esc_html_x( 'No results found.', 'A message saying that there are no results found on the default page query.', THEME_NS ) ?></p>
         <!-- /wp:paragraph -->
     <!-- /wp:query-no-results -->
 </main>

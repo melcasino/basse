@@ -14,7 +14,7 @@
 
 
 
-namespace basse;
+namespace Basse;
 
 
 

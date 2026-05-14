@@ -8,7 +8,7 @@
 
 
 
-namespace basse;
+namespace Basse;
 
 
 
@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.1.0
  * 
  * @see get_file_data()
- * @see basse\enqueue_block_script_if_block_has_class()
+ * @see Basse\enqueue_block_script_if_block_has_class()
  */
 function enqueue_block_patterns_custom_scripts() {
 

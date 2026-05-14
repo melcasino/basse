@@ -8,7 +8,7 @@
 
 
 
-namespace basse;
+namespace Basse;
 
 
 
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.1.0
  * 
  * @see get_file_data()
- * @see basse\dynamically_enqueue_custom_block_style()
+ * @see Basse\dynamically_enqueue_custom_block_style()
  */
 function enqueue_block_style_variations_css() {
 

@@ -8,7 +8,7 @@
 
 
 
-namespace basse;
+namespace Basse;
 
 
 

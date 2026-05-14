@@ -8,7 +8,7 @@
 
 
 
-namespace basse;
+namespace Basse;
 
 
 
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.1.0
  * 
  * @see render_block_{$this->name}
- * @see basse\block_has_class()
+ * @see Basse\block_has_class()
  * 
  * @param string $block_name The name of the block where the CSS asset will be used. 
  *                           It must have the block namespace and the block slug. (e.g. core/button)
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function enqueue_block_style_if_block_has_class( string $block_name, string $class_name, array $args ) {
 
     // Bail early if required functions does not exist.
-    if ( ! function_exists( 'basse\block_has_class' ) ) return;
+    if ( ! function_exists( 'Basse\block_has_class' ) ) return;
 
     // Bail early if $block_name or $class_name is not set
     if ( ! isset( $block_name ) || ! isset( $class_name ) ) return;

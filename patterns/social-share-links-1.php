@@ -44,7 +44,7 @@
         ?>
 
         <!-- wp:paragraph -->
-        <p><em><a href="<?php esc_url( 'https://wordpress.org/plugins/social-sharing-block/' ) ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Social Sharing Block', THEME_NS ) ?></a><?php esc_html_e( ' goes here...', THEME_NS ) ?></em></p>
+        <p><em><a href="<?php echo esc_url( 'https://wordpress.org/plugins/social-sharing-block/' ) ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Social Sharing Block', THEME_NS ) ?></a><?php esc_html_e( ' goes here...', THEME_NS ) ?></em></p>
         <!-- /wp:paragraph -->
         
         <?php

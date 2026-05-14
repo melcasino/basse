@@ -11,7 +11,7 @@
  * Viewport Width: 400
  * Inserter: true
  *
- * @package Basse
+ * @package basse
  * @since 0.1.0
  */ 
 ?>
